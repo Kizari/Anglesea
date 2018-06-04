@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CalculationActivity"
+    android:background="@color/colorSecondary">
+
+    <View
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="@color/colorPrimaryDark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Approved by:"
+        android:layout_above="@+id/signature"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"/>
+
+    <com.github.gcacace.signaturepad.views.SignaturePad
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/signature"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:penColor="@color/colorPrimaryDark"
+        android:background="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="5dp"
+        app:penMinWidth="1dp"
+        app:penMaxWidth="3dp"
+        app:clearOnDoubleClick="true" />
+
+</RelativeLayout>
