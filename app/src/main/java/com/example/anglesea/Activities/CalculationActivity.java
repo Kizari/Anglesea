@@ -1,7 +1,9 @@
-package com.example.anglesea;
+package com.example.anglesea.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.anglesea.R;
 
 public class CalculationActivity extends AppCompatActivity
 {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".Activities.MainActivity"
     android:background="@color/colorSecondary"
     android:orientation="vertical">
 
@@ -14,55 +14,16 @@
         android:layout_height="4dp"
         android:background="@color/colorPrimaryDark" />
 
-    <TextView
-        android:id="@+id/textDay"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Day Stay"
-        android:textColor="#ffffff"
-        android:background="@color/colorPrimary"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/layoutDay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textDay"
-        android:layout_above="@+id/textNight"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:layout_weight="25">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="RoomListActivity"
+            android:onClick="startRoomListActivity" />
 
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textNight"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Overnight Stay"
-        android:textColor="#ffffff"
-        android:background="@color/colorPrimary"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_centerVertical="true"
-        android:layout_weight="1"/>
-
-    <LinearLayout
-        android:id="@+id/layoutNight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textNight"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:layout_weight="40">
-
-    </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

@@ -1,25 +1,49 @@
-package com.example.anglesea;
+package com.example.anglesea.Activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.example.anglesea.DataAccess.DB;
+import com.example.anglesea.DataAccess.Patient.Patient;
+import com.example.anglesea.Entities.BaseActivity;
+import com.example.anglesea.R;
 
-public class MainActivity extends BaseActivity
+import java.util.GregorianCalendar;
+
+public class RoomListActivity extends BaseActivity
 {
+    private void databaseExample()
+    {
+        // Get reference to the database
+        DB db = DB.get(this);
+
+        // Create a new patient object
+        Patient patient = new Patient();
+        patient.setNHI("ABC1234");
+        patient.setFullName("John Smith");
+        patient.setDOB((new GregorianCalendar(1990, 1, 1).getTimeInMillis()));
+        patient.setRoomId("Rm10");
+
+        // Insert the patient into the database
+        db.patient().insert(patient);
+
+        // Select patient by room id
+        Patient patient2 = db.patient().getByRoom("Rm10");
+
+        // Delete the patient out of the database
+        db.patient().delete(patient2);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_room_list);
 
         createRooms((LinearLayout)findViewById(R.id.layoutDay), 12, 6, "D");
         createRooms((LinearLayout)findViewById(R.id.layoutNight), 17, 6, "Rm");

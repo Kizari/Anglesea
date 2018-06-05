@@ -1,4 +1,4 @@
-package com.example.anglesea;
+package com.example.anglesea.Entities;
 
 import android.content.Context;
 import android.os.Bundle;
