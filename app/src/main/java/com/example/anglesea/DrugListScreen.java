@@ -15,6 +15,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 import android.widget.Button;
 
+import com.example.anglesea.Entities.Helper;
+
 import java.util.ArrayList;
 
 public class DrugListScreen extends AppCompatActivity {
