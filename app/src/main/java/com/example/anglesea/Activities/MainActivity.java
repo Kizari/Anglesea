@@ -21,4 +21,16 @@ public class MainActivity extends BaseActivity
         Intent intent = new Intent(this, RoomListActivity.class);
         startActivity(intent);
     }
+
+    public void startAddDrug(View v)
+    {
+        Intent intent = new Intent(this, AddDrugActivity.class);
+        startActivity(intent);
+    }
+
+    public void startDrugListScreen(View v)
+    {
+        Intent intent = new Intent(this, DrugListActivity.class);
+        startActivity(intent);
+    }
 }

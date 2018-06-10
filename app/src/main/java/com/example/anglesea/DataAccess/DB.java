@@ -5,15 +5,18 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 
+import com.example.anglesea.DataAccess.Drug.Drug;
+import com.example.anglesea.DataAccess.Drug.DrugDao;
 import com.example.anglesea.DataAccess.Patient.Patient;
 import com.example.anglesea.DataAccess.Patient.PatientDao;
 
-@Database(entities = { Patient.class }, version = 1)
+@Database(entities = { Patient.class, Drug.class }, version = 2)
 public abstract class DB extends RoomDatabase
 {
     private static DB instance;
 
     public abstract PatientDao patient();
+    public abstract DrugDao drug();
 
     public static DB get(Context context)
     {

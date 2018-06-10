@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".Activities.CalculationActivity" />
         <activity android:name=".Activities.RoomListActivity"></activity>
+        <activity android:name=".Activities.AddDrugActivity"></activity>
+        <activity android:name=".Activities.DrugListActivity"></activity>
     </application>
 
 </manifest>
