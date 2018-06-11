@@ -11,7 +11,12 @@ import com.example.anglesea.DataAccess.Patient.Patient;
 import com.example.anglesea.DataAccess.Patient.PatientDao;
 import com.example.anglesea.DataAccess.Room.RoomDao;
 
-@Database(entities = { Patient.class, Drug.class, Room.class }, version = 3)
+@Database(entities =
+{
+        Patient.class,
+        Drug.class,
+        com.example.anglesea.DataAccess.Room.Room.class
+}, version = 3)
 public abstract class DB extends RoomDatabase
 {
     private static DB instance;
