@@ -9,14 +9,16 @@ import com.example.anglesea.DataAccess.Drug.Drug;
 import com.example.anglesea.DataAccess.Drug.DrugDao;
 import com.example.anglesea.DataAccess.Patient.Patient;
 import com.example.anglesea.DataAccess.Patient.PatientDao;
+import com.example.anglesea.DataAccess.Room.RoomDao;
 
-@Database(entities = { Patient.class, Drug.class }, version = 2)
+@Database(entities = { Patient.class, Drug.class, Room.class }, version = 3)
 public abstract class DB extends RoomDatabase
 {
     private static DB instance;
 
     public abstract PatientDao patient();
     public abstract DrugDao drug();
+    public abstract RoomDao room();
 
     public static DB get(Context context)
     {

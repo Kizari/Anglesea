@@ -10,10 +10,12 @@ import android.widget.TextView;
 
 import com.example.anglesea.DataAccess.DB;
 import com.example.anglesea.DataAccess.Patient.Patient;
+import com.example.anglesea.DataAccess.Room.Room;
 import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.R;
 
 import java.util.GregorianCalendar;
+import java.util.List;
 
 public class RoomListActivity extends BaseActivity
 {

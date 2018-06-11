@@ -14,9 +14,70 @@
         android:background="@color/colorPrimaryDark" />
 
     <TextView
+        android:id="@+id/textInputHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Administration Input"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_below="@+id/topBar" />
+
+    <TableLayout
+        android:id="@+id/tableInput"
+        android:layout_below="@+id/textInputHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1"
+        android:layout_margin="10dp">
+
+        <TableRow android:layout_width="match_parent">
+            <TextView android:text="Standing Order (mg/kg):"/>
+            <EditText />
+        </TableRow>
+
+        <TableRow>
+            <TextView android:text="Patient Weight (kg):"/>
+            <EditText />
+        </TableRow>
+
+    </TableLayout>
+
+    <TextView
+        android:id="@+id/textCalculation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculation"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_below="@+id/tableInput"/>
+
+    <TextView
+        android:id="@+id/textApproval"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verify Administration"
+        android:textColor="#ffffff"
+        android:background="@color/colorPrimary"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:layout_above="@+id/textNurseSignature"
+        android:layout_marginBottom="10dp"/>
+
+    <TextView
+        android:id="@+id/textNurseSignature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Approved by:"
+        android:text="Nurse Signature:"
         android:layout_above="@+id/signature"
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="5dp"/>
@@ -28,11 +89,31 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         app:penColor="@color/colorPrimaryDark"
-        android:background="#ffffff"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+id/signatureUnderline"
         android:layout_margin="5dp"
         app:penMinWidth="1dp"
         app:penMaxWidth="3dp"
         app:clearOnDoubleClick="true" />
+
+    <View
+        android:id="@+id/signatureUnderline"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_above="@+id/buttonApprove"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"/>
+
+    <Button
+        android:id="@+id/buttonApprove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/generic_button_background"
+        android:textColor="@color/colorPrimary"
+        android:layout_margin="10dp"
+        android:text="Approve Administration"
+        android:layout_alignParentBottom="true"
+        style="?android:attr/borderlessButtonStyle" />
 
 </RelativeLayout>
