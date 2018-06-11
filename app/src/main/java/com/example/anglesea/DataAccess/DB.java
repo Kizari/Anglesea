@@ -7,6 +7,7 @@ import android.content.Context;
 
 import com.example.anglesea.DataAccess.Drug.Drug;
 import com.example.anglesea.DataAccess.Drug.DrugDao;
+import com.example.anglesea.DataAccess.Nurse.NurseDao;
 import com.example.anglesea.DataAccess.Patient.Patient;
 import com.example.anglesea.DataAccess.Patient.PatientDao;
 import com.example.anglesea.DataAccess.Room.RoomDao;
@@ -15,7 +16,8 @@ import com.example.anglesea.DataAccess.Room.RoomDao;
 {
         Patient.class,
         Drug.class,
-        com.example.anglesea.DataAccess.Room.Room.class
+        com.example.anglesea.DataAccess.Room.Room.class,
+        com.example.anglesea.DataAccess.Nurse.Nurse.class
 }, version = 3)
 public abstract class DB extends RoomDatabase
 {
@@ -24,6 +26,7 @@ public abstract class DB extends RoomDatabase
     public abstract PatientDao patient();
     public abstract DrugDao drug();
     public abstract RoomDao room();
+    public abstract NurseDao nurse();
 
     public static DB get(Context context)
     {
