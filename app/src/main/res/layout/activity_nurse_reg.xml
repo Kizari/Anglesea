@@ -38,7 +38,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/RNTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -55,7 +55,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/FNTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
@@ -74,7 +74,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editText5"
+            android:id="@+id/LNTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
@@ -93,7 +93,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editText6"
+            android:id="@+id/PWTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_column="1"
