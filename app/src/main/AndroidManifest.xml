@@ -17,9 +17,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activities.CalculationActivity" />
-        <activity android:name=".Activities.RoomListActivity"></activity>
-        <activity android:name=".Activities.AddDrugActivity"></activity>
-        <activity android:name=".Activities.DrugListActivity"></activity>
+        <activity android:name=".Activities.RoomListActivity" />
+        <activity android:name=".Activities.AddDrugActivity" />
+        <activity android:name=".Activities.DrugListActivity" />
+        <activity android:name=".Activities.IVOralActivity" />
+        <activity android:name=".Activities.NurseRegActivity"></activity>
     </application>
 
 </manifest>
