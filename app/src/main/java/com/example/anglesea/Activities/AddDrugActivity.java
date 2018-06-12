@@ -1,5 +1,7 @@
 package com.example.anglesea.Activities;
 
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -36,6 +38,15 @@ public class AddDrugActivity extends BaseActivity
 
     }
 
+    saveButton.setOnClickListener(new View.OnClickListener){
+        @Override
+                public void(View view){
+            // I am still not able to save to the data base
+        // So I am trying to see if this way will sort it out for me
+        // so far not joy
+
+    }
+}
     public void newDrugOnClick(View v)
     {
         // Create a new drug object
@@ -45,7 +56,10 @@ public class AddDrugActivity extends BaseActivity
         // Insert the drug object into the database
         mDatabase.drug().insert(drug);
     }
+
+
     public void name (String newDrug){
+
 
         Drug drug = new Drug();
         drug.setName("Paracetamol");

@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.example.anglesea.DataAccess.Drug.Drug;
 import com.example.anglesea.Entities.BaseActivity;
+import com.example.anglesea.DataAccess.DB;
 import com.example.anglesea.R;
 
 import java.util.ArrayList;
@@ -30,7 +31,7 @@ import static java.lang.String.valueOf;
 public class DrugListActivity extends BaseActivity {
 
     private static final String TAG ="ListDatActivity";
-    private ListView Lview;
+    private ListView Lview, drugList;
     private EditText drugId;
     private FloatingActionButton drugListButton;
 
@@ -69,10 +70,7 @@ public class DrugListActivity extends BaseActivity {
                 edit.putExtra("drugName", drug.getName());
                 startActivity(edit);
             }
-        });
-
-
-
+        }); 
     }//End of Populate View
 
 
