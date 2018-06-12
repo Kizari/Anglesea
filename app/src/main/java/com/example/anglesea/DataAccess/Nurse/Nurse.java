@@ -19,6 +19,9 @@ public class Nurse {
     @ColumnInfo(name = "LastName")
     private String LastName;
 
+    @ColumnInfo(name = "Password")
+    private String Password;
+
     public String getRN() {
         return RN;
     }
@@ -35,11 +38,15 @@ public class Nurse {
         this.FirstName = FirstName;
     }
 
-    public String getLasttName() {
+    public String getLastName() {
         return LastName;
     }
 
     public void setLastName(String LastName) {
         this.LastName = LastName;
     }
+
+    public String getPass(){return Password;}
+
+    public void setPassword(String password){this.LastName = Password;}
 }
