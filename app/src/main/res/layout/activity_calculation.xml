@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.CalculationActivity"
-    android:background="@color/colorSecondary">
+    android:background="@color/colorSecondary"
+    tools:context=".Activities.CalculationActivity">
 
     <View
         android:id="@+id/topBar"
@@ -17,30 +17,34 @@
         android:id="@+id/textInputHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Administration Input"
-        android:textColor="#ffffff"
+        android:layout_below="@+id/topBar"
         android:background="@color/colorPrimary"
+        android:paddingBottom="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_below="@+id/topBar" />
+        android:text="Administration Input"
+        android:textColor="#ffffff" />
 
     <TableLayout
         android:id="@+id/tableInput"
-        android:layout_below="@+id/textInputHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:stretchColumns="1"
-        android:layout_margin="10dp">
+        android:layout_below="@+id/textInputHeader"
+        android:layout_margin="10dp"
+        android:stretchColumns="1">
 
         <TableRow android:layout_width="match_parent">
-            <TextView android:text="Standing Order (mg/kg):"/>
+
+            <TextView android:text="Standing Order (mg/kg):" />
+
             <EditText />
         </TableRow>
 
         <TableRow>
-            <TextView android:text="Patient Weight (kg):"/>
+
+            <TextView android:text="Patient Weight (kg):" />
+
             <EditText />
         </TableRow>
 
@@ -50,70 +54,69 @@
         android:id="@+id/textCalculation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calculation"
-        android:textColor="#ffffff"
+        android:layout_below="@+id/tableInput"
         android:background="@color/colorPrimary"
+        android:paddingBottom="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_below="@+id/tableInput"/>
+        android:text="Calculation"
+        android:textColor="#ffffff" />
 
     <TextView
         android:id="@+id/textApproval"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Verify Administration"
-        android:textColor="#ffffff"
+        android:layout_above="@+id/textNurseSignature"
+        android:layout_marginBottom="10dp"
         android:background="@color/colorPrimary"
+        android:paddingBottom="10dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_above="@+id/textNurseSignature"
-        android:layout_marginBottom="10dp"/>
+        android:text="Verify Administration"
+        android:textColor="#ffffff" />
 
     <TextView
         android:id="@+id/textNurseSignature"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nurse Signature:"
         android:layout_above="@+id/signature"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginBottom="5dp"/>
+        android:text="Nurse Signature:" />
 
-    <com.github.gcacace.signaturepad.views.SignaturePad
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.github.gcacace.signaturepad.views.SignaturePad xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/signature"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        app:penColor="@color/colorPrimaryDark"
         android:layout_above="@+id/signatureUnderline"
         android:layout_margin="5dp"
-        app:penMinWidth="1dp"
+        app:clearOnDoubleClick="true"
+        app:penColor="@color/colorPrimaryDark"
         app:penMaxWidth="3dp"
-        app:clearOnDoubleClick="true" />
+        app:penMinWidth="1dp" />
 
     <View
         android:id="@+id/signatureUnderline"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorPrimaryDark"
         android:layout_above="@+id/buttonApprove"
-        android:layout_marginStart="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="5dp"/>
+        android:layout_marginStart="10dp"
+        android:background="@color/colorPrimaryDark" />
 
     <Button
         android:id="@+id/buttonApprove"
+        style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/generic_button_background"
-        android:textColor="@color/colorPrimary"
-        android:layout_margin="10dp"
-        android:text="Approve Administration"
         android:layout_alignParentBottom="true"
-        style="?android:attr/borderlessButtonStyle" />
+        android:layout_margin="10dp"
+        android:background="@drawable/generic_button_background"
+        android:text="Approve Administration"
+        android:textColor="@color/colorPrimary" />
 
 </RelativeLayout>

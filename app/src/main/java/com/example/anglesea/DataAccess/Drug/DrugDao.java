@@ -20,6 +20,9 @@ public interface DrugDao
     @Query("SELECT * FROM drug")
     List<Drug> getAll();
 
+    @Query("SELECT * FROM drug WHERE name = :name")
+    Drug getByName(String name);
+
     @Delete
     void delete(Drug drug);
 }

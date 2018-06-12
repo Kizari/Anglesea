@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.content.Intent;
+import android.widget.Toast;
 
 import com.example.anglesea.DataAccess.DB;
 import com.example.anglesea.DataAccess.Drug.Drug;
@@ -43,5 +44,14 @@ public class AddDrugActivity extends BaseActivity
 
         // Insert the drug object into the database
         mDatabase.drug().insert(drug);
+    }
+    public void name (String newDrug){
+
+        Drug drug = new Drug();
+        drug.setName("Paracetamol");
+        drug.setStrength(20);
+
+        mDatabase.drug().insert(drug);
+
     }
 }

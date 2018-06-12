@@ -13,6 +13,9 @@ public class Drug
     @ColumnInfo(name = "name")
     private String name;
 
+    @ColumnInfo(name = "strength")
+    private int strength;
+
     public long getId() {
         return id;
     }
@@ -27,5 +30,13 @@ public class Drug
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
     }
 }

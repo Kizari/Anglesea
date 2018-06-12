@@ -1,22 +1,28 @@
 package com.example.anglesea.Activities;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Button;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import com.example.anglesea.DataAccess.Drug.Drug;
 import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DrugListActivity extends BaseActivity {
@@ -45,7 +51,7 @@ public class DrugListActivity extends BaseActivity {
         List<Drug> listDrugs = mDatabase.drug().getAll();
 
         //Create the list adapter and set
-        ListAdapter adapter = new ArrayAdapter<>(this,android.R.layout.simple_list_item_1, listDrugs);
+        ListAdapter adapter = new DrugListAdapter(this, R.layout.item_drug, listDrugs);
         Lview.setAdapter(adapter);
 
         //Set an onItemListener to the ListView
@@ -72,4 +78,28 @@ public class DrugListActivity extends BaseActivity {
         startActivity(i);
     }
 
+    private class DrugListAdapter extends ArrayAdapter<Drug>
+    {
+        public DrugListAdapter(Context context, int resource, List<Drug> items)
+        {
+            super(context, resource, items);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent)
+        {
+            LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
+            View view = inflater.inflate(R.layout.item_drug, parent);
+
+            TextView name = view.findViewById(R.id.textName);
+            TextView strength = view.findViewById(R.id.textStrength);
+
+            Drug drug = getItem(position);
+
+            name.setText(drug.getName());
+            strength.setText(drug.getStrength());
+
+            return view;
+        }
+    }
 }
