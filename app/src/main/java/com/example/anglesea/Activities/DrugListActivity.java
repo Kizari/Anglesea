@@ -25,6 +25,8 @@ import com.example.anglesea.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.String.valueOf;
+
 public class DrugListActivity extends BaseActivity {
 
     private static final String TAG ="ListDatActivity";
@@ -51,13 +53,15 @@ public class DrugListActivity extends BaseActivity {
         List<Drug> listDrugs = mDatabase.drug().getAll();
 
         //Create the list adapter and set
-        ListAdapter adapter = new DrugListAdapter(this, R.layout.item_drug, listDrugs);
+        ListAdapter adapter = new DrugListAdapter(this, listDrugs);
         Lview.setAdapter(adapter);
 
         //Set an onItemListener to the ListView
-        Lview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Lview.setOnItemClickListener(new AdapterView.OnItemClickListener()
+        {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
                 Drug drug = (Drug)adapterView.getItemAtPosition(i);
                 Log.d(TAG,"onItemClick: You Clicked on " + drug.getName());
                 Intent edit = new Intent(DrugListActivity.this,AddDrugActivity.class);
@@ -80,26 +84,26 @@ public class DrugListActivity extends BaseActivity {
 
     private class DrugListAdapter extends ArrayAdapter<Drug>
     {
-        public DrugListAdapter(Context context, int resource, List<Drug> items)
+        public DrugListAdapter(Context context, List<Drug> items)
         {
-            super(context, resource, items);
+            super(context, 0, items);
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent)
         {
-            LayoutInflater inflater = (LayoutInflater)getSystemService(LAYOUT_INFLATER_SERVICE);
-            View view = inflater.inflate(R.layout.item_drug, parent);
+            if(convertView == null)
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_drug, parent, false);
 
-            TextView name = view.findViewById(R.id.textName);
-            TextView strength = view.findViewById(R.id.textStrength);
+            TextView name = convertView.findViewById(R.id.textName);
+            TextView strength = convertView.findViewById(R.id.textStrength);
 
             Drug drug = getItem(position);
 
             name.setText(drug.getName());
-            strength.setText(drug.getStrength());
+            strength.setText(valueOf(drug.getStrength()));
 
-            return view;
+            return convertView;
         }
     }
 }
