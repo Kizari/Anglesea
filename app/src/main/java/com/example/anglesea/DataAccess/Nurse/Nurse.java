@@ -1,6 +1,7 @@
 package com.example.anglesea.DataAccess.Nurse;
 
 import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
@@ -8,7 +9,9 @@ import android.support.annotation.NonNull;
  * Created by sarab on 6/12/2018.
  */
 
-public class Nurse {
+@Entity
+public class Nurse
+{
     @PrimaryKey
     @NonNull
     private String RN;
@@ -49,4 +52,8 @@ public class Nurse {
     public String getPass(){return Password;}
 
     public void setPassword(String password){this.LastName = Password;}
+
+    public String getPassword() {
+        return Password;
+    }
 }

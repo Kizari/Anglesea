@@ -2,6 +2,7 @@ package com.example.anglesea.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.view.View;
 
 import com.example.anglesea.Entities.BaseActivity;
@@ -12,6 +13,7 @@ public class MainActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
+        SystemClock.sleep(2000);
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
