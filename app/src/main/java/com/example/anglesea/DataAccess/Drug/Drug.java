@@ -16,6 +16,9 @@ public class Drug
     @ColumnInfo(name = "strength")
     private int strength;
 
+    @ColumnInfo(name = "isRedDrug")
+    private boolean isRedDrug;
+
     public long getId() {
         return id;
     }
@@ -38,5 +41,13 @@ public class Drug
 
     public void setStrength(int strength) {
         this.strength = strength;
+    }
+
+    public boolean isRedDrug() {
+        return isRedDrug;
+    }
+
+    public void setRedDrug(boolean redDrug) {
+        isRedDrug = redDrug;
     }
 }

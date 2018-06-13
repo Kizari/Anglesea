@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Button;
@@ -48,6 +49,14 @@ public class DrugListActivity extends BaseActivity {
         populateListView();
     }//End of On Create
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        ListAdapter adapter = new DrugListAdapter(this, mDatabase.drug().getAll());
+        Lview.setAdapter(adapter);
+    }
+
     private void populateListView(){
         Log.d(TAG,"populateListView: Display list of drugs");
         //Retrieve list from database and populate list view
@@ -75,7 +84,8 @@ public class DrugListActivity extends BaseActivity {
 
 
 
-    public void listOnClick(View view){
+    public void listOnClick(View view)
+    {
         Intent i = new Intent(this,AddDrugActivity.class);
         startActivity(i);
     }
@@ -95,11 +105,15 @@ public class DrugListActivity extends BaseActivity {
 
             TextView name = convertView.findViewById(R.id.textName);
             TextView strength = convertView.findViewById(R.id.textStrength);
+            LinearLayout layout = convertView.findViewById(R.id.layout);
 
             Drug drug = getItem(position);
 
             name.setText(drug.getName());
             strength.setText(valueOf(drug.getStrength()));
+
+            if(drug.isRedDrug())
+                layout.setBackgroundColor(getResources().getColor(R.color.redDrug));
 
             return convertView;
         }

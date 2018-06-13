@@ -19,7 +19,7 @@ import com.example.anglesea.DataAccess.Room.RoomDao;
         Drug.class,
         com.example.anglesea.DataAccess.Room.Room.class,
         Nurse.class
-}, version = 5)
+}, version = 6)
 public abstract class DB extends RoomDatabase
 {
     private static DB instance;

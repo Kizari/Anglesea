@@ -1,71 +1,74 @@
 package com.example.anglesea.Activities;
 
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.content.Intent;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.anglesea.DataAccess.DB;
 import com.example.anglesea.DataAccess.Drug.Drug;
 import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.R;
+import android.widget.CheckBox;
 
 
 public class AddDrugActivity extends BaseActivity
 {
     private static final String TAG = "AddDrugActivity ";
-    FloatingActionButton saveButton;
-    TextView addDrugText;
-    DB myDb;
+    private FloatingActionButton saveButton;
+    private  EditText addDrugText;
+    private EditText strengthText;
+    private CheckBox redDrugCheckBox;
 
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_drug);
-
         saveButton = (FloatingActionButton) findViewById(R.id.saveButton);
-        addDrugText = (TextView) findViewById(R.id.addDrugText);
-
-        //Intent i = new Intent(this,AddDrugActivity.class);
-        //startService(i);
-
+        addDrugText = (EditText) findViewById(R.id.addDrugEditText);
+        strengthText = findViewById(R.id.strengthEditText);
+        redDrugCheckBox = findViewById(R.id.redDrugChecfkBox);
     }
 
-    saveButton.setOnClickListener(new View.OnClickListener){
-        @Override
-                public void(View view){
-            // I am still not able to save to the data base
-        // So I am trying to see if this way will sort it out for me
-        // so far not joy
-
-    }
-}
-    public void newDrugOnClick(View v)
-    {
+    public void newDrugOnClick(View v) {
         // Create a new drug object
         Drug drug = new Drug();
-        drug.setName("Test Drug");
+
+        // Write an if statement to validate empty text boxes
+
+        // Try/catch on the Integer.getInteger to make sure it's a string
+
+        // Set the name of the drug to the text box value
+        drug.setName(addDrugText.getText().toString());
+
+        // Set the strength of the drug to the text box value
+        int strength = 0;
+        try
+        {
+            strength = Integer.parseInt(strengthText.getText().toString());
+        }
+        catch(Exception ex)
+        {
+            Toast.makeText(this, "Please enter a valid number for the strength value.", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        drug.setStrength(strength);
+        CheckBox checkBox = findViewById(R.id.redDrugChecfkBox);
+
+       if(checkBox.isChecked())
+            drug.setRedDrug(true);
+       else
+           drug.setRedDrug(false);
 
         // Insert the drug object into the database
         mDatabase.drug().insert(drug);
-    }
 
-
-    public void name (String newDrug){
-
-
-        Drug drug = new Drug();
-        drug.setName("Paracetamol");
-        drug.setStrength(20);
-
-        mDatabase.drug().insert(drug);
-
+        // Close this activity, go back to the list
+        finish();
     }
 }

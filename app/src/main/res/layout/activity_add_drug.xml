@@ -41,7 +41,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/addDrugText"
+        android:id="@+id/addDrugEditText"
         android:layout_width="match_parent"
         android:layout_height="41dp"
         android:layout_marginLeft="8dp"
@@ -66,12 +66,12 @@
         android:text="Add New Drug"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/addDrugText"
+        app:layout_constraintBottom_toTopOf="@+id/addDrugEditText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/strenghthEditText"
+        android:id="@+id/strengthEditText"
         android:layout_width="100dp"
         android:layout_height="39dp"
         android:layout_marginLeft="16dp"
@@ -81,17 +81,32 @@
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addDrugText" />
+        app:layout_constraintTop_toBottomOf="@+id/addDrugEditText" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="33dp"
+        android:layout_marginEnd="168dp"
+        android:layout_marginLeft="9dp"
+        android:layout_marginRight="168dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="32dp"
         android:text="mg/ml per day"
-        app:layout_constraintStart_toEndOf="@+id/strenghthEditText"
-        app:layout_constraintTop_toBottomOf="@+id/addDrugText" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/strengthEditText"
+        app:layout_constraintTop_toBottomOf="@+id/addDrugEditText" />
+
+    <CheckBox
+        android:id="@+id/redDrugChecfkBox"
+        android:layout_width="173dp"
+        android:layout_height="29dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="19dp"
+        android:background="@android:color/background_light"
+        android:text="Check For Red Drug"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/strengthEditText" />
 
 </android.support.constraint.ConstraintLayout>
