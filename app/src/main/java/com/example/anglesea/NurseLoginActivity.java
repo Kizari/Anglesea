@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.anglesea.Activities.MainActivity;
 import com.example.anglesea.DataAccess.Nurse.Nurse;
@@ -26,6 +27,21 @@ public class NurseLoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nurse_login);
 
+        List<Nurse> nurses = mDatabase.nurse().getAll();
+
+        // Create the test nurse account if it doesn't exist
+        if(mDatabase.nurse().getByRN("ABC123") == null)
+        {
+            Nurse nurse = new Nurse();
+            nurse.setRN("ABC123");
+            nurse.setFirstName("Aamina");
+            nurse.setLastName("Ahmed");
+            nurse.setPassword("password");
+            mDatabase.nurse().insert(nurse);
+        }
+
+        nurses = mDatabase.nurse().getAll();
+
         //Setting the above variables with id's availabe in the xml
 
         RNNumber = (TextView)findViewById(R.id.txt_RNnumber);
@@ -44,10 +60,28 @@ public class NurseLoginActivity extends BaseActivity {
     //Checking if the username and password are right
     private  void validate(String userName, String userPassword){//replace with database check
         Nurse nurse = mDatabase.nurse().getByRN(userName);
-        if(Password.getText().toString() == nurse.getPassword()){
+
+        if(nurse == null)
+        {
+            // If it gets here, there was no nurse matching the RN the user entered
+            // Show a message to the user to let them know the RN is wrong
+            Toast.makeText(this, "No nurse found for this RN.", Toast.LENGTH_LONG).show();
+
+            // Stop validating because there is no nurse to validate
+            return;
+        }
+
+        if(Password.getText().toString() == nurse.getPassword())
+        {
+            // Password matched so go to next activity
+            Toast.makeText(this, "Password is correct!", Toast.LENGTH_LONG).show();
             //Intent intent  = new Intent(MainActivity.this, SecondActivity.class);
             //startActivity(intent);
-
+        }
+        else
+        {
+            // Password didn't match so tell the user it was wrong
+            Toast.makeText(this, "Incorrect password.", Toast.LENGTH_LONG).show();
         }
     }
 

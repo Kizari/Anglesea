@@ -6,6 +6,8 @@ import android.os.SystemClock;
 import android.view.View;
 
 import com.example.anglesea.Entities.BaseActivity;
+import com.example.anglesea.NurseLoginActivity;
+import com.example.anglesea.PatientRegActivity;
 import com.example.anglesea.R;
 
 public class MainActivity extends BaseActivity
@@ -34,6 +36,17 @@ public class MainActivity extends BaseActivity
     public void startDrugListScreen(View v)
     {
         Intent intent = new Intent(this, DrugListActivity.class);
+        startActivity(intent);
+    }
+    public  void startNurseLogin(View v)
+    {
+        Intent intent = new Intent(this, NurseLoginActivity.class);
+        startActivity(intent);
+    }
+
+    public void startPtientRegistration(View v)
+    {
+        Intent intent = new Intent(this, PatientRegActivity.class);
         startActivity(intent);
     }
 }
