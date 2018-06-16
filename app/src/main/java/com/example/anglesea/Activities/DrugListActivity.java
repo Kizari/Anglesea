@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
@@ -106,11 +107,22 @@ public class DrugListActivity extends BaseActivity {
             TextView name = convertView.findViewById(R.id.textName);
             TextView strength = convertView.findViewById(R.id.textStrength);
             LinearLayout layout = convertView.findViewById(R.id.layout);
+            Button delete = convertView.findViewById(R.id.deleteButton);
 
-            Drug drug = getItem(position);
+            final Drug drug = getItem(position);
 
             name.setText(drug.getName());
             strength.setText(valueOf(drug.getStrength()));
+
+            delete.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v)
+                {
+                    mDatabase.drug().delete(drug);
+                    onResume();
+                }
+            });
 
             if(drug.isRedDrug())
                 layout.setBackgroundColor(getResources().getColor(R.color.redDrug));
