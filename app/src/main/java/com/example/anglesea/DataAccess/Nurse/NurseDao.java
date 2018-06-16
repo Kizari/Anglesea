@@ -23,6 +23,9 @@ public interface NurseDao
     @Query("SELECT * FROM nurse")
     List<Nurse> getAll();
 
+    @Query("SELECT * FROM nurse WHERE RN = :RN")
+    Nurse getByRN(String RN);
+
     @Delete
     void delete(Nurse nurse);
 
