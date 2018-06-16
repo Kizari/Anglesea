@@ -14,7 +14,7 @@ public class Drug
     private String name;
 
     @ColumnInfo(name = "strength")
-    private int strength;
+    private float strength;
 
     @ColumnInfo(name = "isRedDrug")
     private boolean isRedDrug;
@@ -35,11 +35,11 @@ public class Drug
         this.name = name;
     }
 
-    public int getStrength() {
+    public float getStrength() {
         return strength;
     }
 
-    public void setStrength(int strength) {
+    public void setStrength(float strength) {
         this.strength = strength;
     }
 
