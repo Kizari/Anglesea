@@ -27,20 +27,12 @@ public class NurseLoginActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nurse_login);
 
-        List<Nurse> nurses = mDatabase.nurse().getAll();
-
         // Create the test nurse account if it doesn't exist
         if(mDatabase.nurse().getByRN("ABC123") == null)
         {
-            Nurse nurse = new Nurse();
-            nurse.setRN("ABC123");
-            nurse.setFirstName("Aamina");
-            nurse.setLastName("Ahmed");
-            nurse.setPassword("password");
+            Nurse nurse = new Nurse("ABC123", "Aamina", "Ahmed", "password");
             mDatabase.nurse().insert(nurse);
         }
-
-        nurses = mDatabase.nurse().getAll();
 
         //Setting the above variables with id's availabe in the xml
 
@@ -71,7 +63,10 @@ public class NurseLoginActivity extends BaseActivity {
             return;
         }
 
-        if(Password.getText().toString() == nurse.getPassword())
+        // We must use .equals() instead of == when comparing strings in Java
+        // This is because == will compare the memory addresses of the two strings being compared, so even if the value is equal, it will return false
+        // Where .equals() will compare the string value and will return true
+        if(Password.getText().toString().equals(nurse.getPassword()))
         {
             // Password matched so go to next activity
             Toast.makeText(this, "Password is correct!", Toast.LENGTH_LONG).show();
