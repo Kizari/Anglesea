@@ -2,9 +2,11 @@ package com.example.anglesea.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.anglesea.DataAccess.Nurse.Nurse;
 import com.example.anglesea.Entities.BaseActivity;
@@ -34,20 +36,43 @@ public class NurseRegActivity extends BaseActivity {
         RegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String RN = RNTxt.getText().toString().trim();
-                String FirstName = FNTxt.getText().toString().trim();
-                String LastName = LNTxt.getText().toString().trim();
-                String Password = PWTxt.getText().toString().trim();
 
-                //Create new nurse object
-                Nurse nurse = new Nurse(RN, FirstName, LastName, Password);
+                if(validate()){
 
-                // Insert the nurse into the database
-                mDatabase.nurse().insert(nurse);
+
+                    String RN = RNTxt.getText().toString().trim();
+                    String FirstName = FNTxt.getText().toString().trim();
+                    String LastName = LNTxt.getText().toString().trim();
+                    String Password = PWTxt.getText().toString().trim();
+                    
+                    //Create new nurse object
+                    Nurse nurse = new Nurse(RN, FirstName, LastName, Password);
+
+                    // Insert the nurse into the database
+                    mDatabase.nurse().insert(nurse);
+                }
 
             }
         });
 
+    }
+
+    private Boolean validate() {
+
+        Boolean res = false;
+
+        String RN = RNTxt.getText().toString().trim();
+        String FirstName = FNTxt.getText().toString().trim();
+        String LastName = LNTxt.getText().toString().trim();
+        String Password = PWTxt.getText().toString().trim();
+
+        if(RN.isEmpty() && Password.isEmpty()){
+            Toast.makeText(this, "Please complete the details", Toast.LENGTH_SHORT).show();
+        }else{
+            res = true;
+        }
+
+        return res;
     }
 
 }
