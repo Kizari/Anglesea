@@ -51,6 +51,13 @@ public class NurseLoginActivity extends BaseActivity {
 
     //Checking if the username and password are right
     private  void validate(String userName, String userPassword){//replace with database check
+
+        if(userName.equals(""))
+        {
+            Toast.makeText(this, "Please enter your RN", Toast.LENGTH_LONG).show();
+            return;
+        }
+
         Nurse nurse = mDatabase.nurse().getByRN(userName);
 
         if(nurse == null)
@@ -66,12 +73,16 @@ public class NurseLoginActivity extends BaseActivity {
         // We must use .equals() instead of == when comparing strings in Java
         // This is because == will compare the memory addresses of the two strings being compared, so even if the value is equal, it will return false
         // Where .equals() will compare the string value and will return true
-        if(Password.getText().toString().equals(nurse.getPassword()))
+        if(userPassword.equals(nurse.getPassword()))
         {
             // Password matched so go to next activity
             Toast.makeText(this, "Password is correct!", Toast.LENGTH_LONG).show();
             //Intent intent  = new Intent(MainActivity.this, SecondActivity.class);
             //startActivity(intent);
+        }
+        else if(userPassword.equals(""))
+        {
+            Toast.makeText(this, "Please enter a password", Toast.LENGTH_LONG).show();
         }
         else
         {
