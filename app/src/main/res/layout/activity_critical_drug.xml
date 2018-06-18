@@ -40,7 +40,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Critical drug confirmation" />
+        android:text="Critical drug confirmation"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/messageTextView"
@@ -60,6 +61,7 @@
         android:layout_marginTop="215dp"
         android:text="Morphine Syrup/Elixir Strength (100mgrms"
         android:textColor="#FF0000"
-        android:textColorLink="#FF0000" />
+        android:textColorLink="#FF0000"
+        android:textSize="14sp" />
 
 </RelativeLayout>

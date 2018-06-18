@@ -29,7 +29,7 @@ public class RoomListActivity extends BaseActivity
         patient.setNHI("ABC1234");
         patient.setFullName("John Smith");
         patient.setDOB((new GregorianCalendar(1990, 1, 1).getTimeInMillis()));
-        patient.setRoomId("Rm10");
+        patient.setRoomId(1);
 
         // Insert the patient into the database
         db.patient().insert(patient);

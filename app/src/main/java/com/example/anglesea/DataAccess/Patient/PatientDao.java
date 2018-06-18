@@ -16,6 +16,9 @@ public interface PatientDao
     @Query("SELECT * FROM patient WHERE roomId = :roomId")
     Patient getByRoom(String roomId);
 
+    @Query("SELECT * FROM patient WHERE NHI = :NHI")
+    Patient getByNHI(String NHI);
+
     @Delete
     void delete(Patient patient);
 }
