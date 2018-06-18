@@ -40,13 +40,9 @@ public class NurseRegActivity extends BaseActivity {
                 String Password = PWTxt.getText().toString().trim();
 
                 //Create new nurse object
-                Nurse nurse = new Nurse();
-                nurse.setRN(RN);
-                nurse.setFirstName(FirstName);
-                nurse.setLastName(LastName);
-                nurse.setPassword(Password);
+                Nurse nurse = new Nurse(RN, FirstName, LastName, Password);
 
-                // Insert the patient into the database
+                // Insert the nurse into the database
                 mDatabase.nurse().insert(nurse);
 
             }

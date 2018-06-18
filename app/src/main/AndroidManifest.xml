@@ -25,7 +25,8 @@
         <activity android:name=".Activities.IVOralActivity" />
         <activity android:name=".Activities.NurseRegActivity" />
         <activity android:name=".Activities.PatientSummaryActivity" />
-        <activity android:name=".Activities.CriticalDrugActivity"></activity>
+        <activity android:name=".NurseLoginActivity" />
+        <activity android:name=".PatientRegActivity"></activity>
     </application>
 
 </manifest>

@@ -46,10 +46,10 @@ public class AddDrugActivity extends BaseActivity
         drug.setName(addDrugText.getText().toString());
 
         // Set the strength of the drug to the text box value
-        int strength = 0;
+        float strength = 0;
         try
         {
-            strength = Integer.parseInt(strengthText.getText().toString());
+            strength = Float.parseFloat(strengthText.getText().toString());
         }
         catch(Exception ex)
         {

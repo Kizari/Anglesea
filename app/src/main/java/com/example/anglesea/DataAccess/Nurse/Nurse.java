@@ -12,8 +12,16 @@ import android.support.annotation.NonNull;
 @Entity
 public class Nurse
 {
-    @PrimaryKey
+    public Nurse(@NonNull String RN, String FirstName, String LastName, String Password)
+    {
+        this.RN = RN;
+        this.FirstName = FirstName;
+        this.LastName = LastName;
+        this.Password = Password;
+    }
+
     @NonNull
+    @PrimaryKey
     private String RN;
 
     @ColumnInfo(name = "FirstName")
@@ -25,6 +33,7 @@ public class Nurse
     @ColumnInfo(name = "Password")
     private String Password;
 
+    @NonNull
     public String getRN() {
         return RN;
     }
