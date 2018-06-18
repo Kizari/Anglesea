@@ -30,7 +30,7 @@ import static java.lang.String.valueOf;
 public class PatientSummaryActivity extends BaseActivity
 {
     Button  closeButton;
-    TextView  patientSummaryTextView, fullNameTextView, nhiNoTextView, roomTextView, adminDrugTextView;
+    TextView fullNameTextView, nhiNoTextView, roomTextView, adminDrugTextView;
     EditText  nhiEditText, roomEditText;
 
 
@@ -41,7 +41,6 @@ public class PatientSummaryActivity extends BaseActivity
         setContentView(R.layout.activity_patient_summary);
 
 
-        patientSummaryTextView =  findViewById(R.id.patientSummaryTextView);
         fullNameTextView = findViewById(R.id.fullNameTextView);
         nhiNoTextView =  findViewById(R.id.nhiNoTextView);
         roomTextView =  findViewById(R.id.roomTextView);

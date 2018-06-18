@@ -17,73 +17,74 @@
         android:layout_margin="10dp"
         android:text="Close" />
 
-    <TextView
-        android:id="@+id/patientSummaryTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Patient detail Summary"
-        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/fullNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:text="DisplayFullName" />
+        android:layout_marginTop="15dp"
+        android:text="DisplayFullName"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"/>
 
-    <TextView
-        android:id="@+id/nhiNoTextView"
-        android:layout_width="71dp"
-        android:layout_height="29dp"
-        android:layout_alignBaseline="@+id/nhiEditText"
-        android:layout_toStartOf="@+id/patientSummaryTextView"
-        android:text="NHI NO:"
-        android:textSize="18sp"
-        android:layout_toLeftOf="@+id/patientSummaryTextView" />
-
-    <EditText
-        android:id="@+id/nhiEditText"
-        android:layout_width="wrap_content"
+    <TableLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/patientSummaryTextView"
-        android:layout_marginTop="80dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:id="@+id/tableForm"
+        android:layout_below="@+id/fullNameTextView"
+        android:layout_margin="10dp">
 
-    <TextView
-        android:id="@+id/roomTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:layout_alignBaseline="@+id/roomEditText"
-        android:layout_toStartOf="@+id/patientSummaryTextView"
-        android:text="ROOM NO:"
-        android:textSize="18sp" />
+        <TableRow>
+            <TextView
+                android:id="@+id/nhiNoTextView"
+                android:layout_width="71dp"
+                android:layout_height="29dp"
+                android:layout_marginRight="40dp"
+                android:text="NHI NO:"
+                android:textSize="18sp"/>
 
-    <EditText
-        android:id="@+id/roomEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/patientSummaryTextView"
-        android:layout_marginTop="136dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+            <EditText
+                android:id="@+id/nhiEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/roomTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="ROOM NO:"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/roomEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+        </TableRow>
+    </TableLayout>
+
+
 
     <TextView
         android:id="@+id/adminDrugTextView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/roomEditText"
-        android:layout_centerHorizontal="true"
-        android:text="Administered Drugs"
-        android:textSize="18sp" />
+        android:layout_below="@+id/tableForm"
+        android:background="@color/colorPrimary"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:text="Administered drug"
+        android:textColor="#ffffff" />
 
     <ListView
         android:id="@+id/resultList"
