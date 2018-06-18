@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.PatientSummaryActivity">
+    tools:context=".Activities.PatientSummaryActivity"
+    android:background="@color/colorSecondary">
 
     <Button
         android:id="@+id/closeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
+        android:background="@drawable/generic_button_background"
+        android:layout_margin="10dp"
         android:text="Close" />
 
     <TextView
@@ -21,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
         android:text="Patient detail Summary"
         android:textSize="18sp" />
 
@@ -31,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp"
+        android:layout_marginTop="40dp"
         android:text="DisplayFullName" />
 
     <TextView
@@ -50,47 +51,47 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/patientSummaryTextView"
-        android:layout_marginTop="105dp"
+        android:layout_marginTop="80dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_alignLeft="@+id/patientSummaryTextView" />
+        android:text="Name" />
 
     <TextView
         android:id="@+id/roomTextView"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="170dp"
+        android:layout_alignBaseline="@+id/roomEditText"
         android:layout_toStartOf="@+id/patientSummaryTextView"
         android:text="ROOM NO:"
-        android:textSize="18sp"
-        android:layout_toLeftOf="@+id/patientSummaryTextView" />
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/roomEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/roomTextView"
+        android:layout_alignParentTop="true"
         android:layout_alignStart="@+id/patientSummaryTextView"
+        android:layout_marginTop="136dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
-        android:layout_alignLeft="@+id/patientSummaryTextView" />
+        android:text="Name" />
 
     <TextView
         android:id="@+id/adminDrugTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_below="@+id/roomEditText"
         android:layout_centerHorizontal="true"
         android:text="Administered Drugs"
         android:textSize="18sp" />
 
     <ListView
+        android:id="@+id/resultList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/resultList">
+        android:layout_height="299dp"
+        android:layout_alignBottom="@id/closeButton"
+        android:layout_alignTop="@+id/adminDrugTextView"
+        android:layout_marginTop="31dp">
 
     </ListView>
 </RelativeLayout>
