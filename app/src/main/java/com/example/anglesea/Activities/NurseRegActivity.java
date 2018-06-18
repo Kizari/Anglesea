@@ -1,8 +1,7 @@
 package com.example.anglesea.Activities;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -39,12 +38,11 @@ public class NurseRegActivity extends BaseActivity {
 
                 if(validate()){
 
-
                     String RN = RNTxt.getText().toString().trim();
                     String FirstName = FNTxt.getText().toString().trim();
                     String LastName = LNTxt.getText().toString().trim();
                     String Password = PWTxt.getText().toString().trim();
-                    
+
                     //Create new nurse object
                     Nurse nurse = new Nurse(RN, FirstName, LastName, Password);
 
@@ -55,6 +53,13 @@ public class NurseRegActivity extends BaseActivity {
             }
         });
 
+        CancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cancel();
+            }
+        });
+
     }
 
     private Boolean validate() {
@@ -62,17 +67,22 @@ public class NurseRegActivity extends BaseActivity {
         Boolean res = false;
 
         String RN = RNTxt.getText().toString().trim();
-        String FirstName = FNTxt.getText().toString().trim();
-        String LastName = LNTxt.getText().toString().trim();
-        String Password = PWTxt.getText().toString().trim();
+        String FirstName = FNTxt.getText().toString();
+        String LastName = LNTxt.getText().toString();
+        String Password = PWTxt.getText().toString();
 
-        if(RN.isEmpty() && Password.isEmpty()){
+        if(RN.isEmpty() && FirstName.isEmpty() && LastName.isEmpty() && Password.isEmpty() ){
             Toast.makeText(this, "Please complete the details", Toast.LENGTH_SHORT).show();
         }else{
             res = true;
         }
 
         return res;
+    }
+
+    private void Cancel(){
+        Intent canIntent = new Intent(NurseRegActivity.this, RoomListActivity.class);
+        startActivity(canIntent);
     }
 
 }
