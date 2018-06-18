@@ -44,9 +44,15 @@ public class MainActivity extends BaseActivity
         startActivity(intent);
     }
 
-    public void startPtientRegistration(View v)
+    public void startPatientRegistration(View v)
     {
         Intent intent = new Intent(this, PatientRegActivity.class);
+        startActivity(intent);
+    }
+
+    public void startNurseReg(View v)
+    {
+        Intent intent = new Intent(this, NurseRegActivity.class);
         startActivity(intent);
     }
 }

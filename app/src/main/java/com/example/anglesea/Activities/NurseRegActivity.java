@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.example.anglesea.DataAccess.Nurse.Nurse;
 import com.example.anglesea.Entities.BaseActivity;
+import com.example.anglesea.NurseLoginActivity;
 import com.example.anglesea.R;
 
 public class NurseRegActivity extends BaseActivity {
@@ -36,19 +37,7 @@ public class NurseRegActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
 
-                if(validate()){
-
-                    String RN = RNTxt.getText().toString().trim();
-                    String FirstName = FNTxt.getText().toString().trim();
-                    String LastName = LNTxt.getText().toString().trim();
-                    String Password = PWTxt.getText().toString().trim();
-
-                    //Create new nurse object
-                    Nurse nurse = new Nurse(RN, FirstName, LastName, Password);
-
-                    // Insert the nurse into the database
-                    mDatabase.nurse().insert(nurse);
-                }
+                validate();
 
             }
         });
@@ -64,24 +53,31 @@ public class NurseRegActivity extends BaseActivity {
 
     private Boolean validate() {
 
-        Boolean res = false;
+
 
         String RN = RNTxt.getText().toString().trim();
         String FirstName = FNTxt.getText().toString();
         String LastName = LNTxt.getText().toString();
         String Password = PWTxt.getText().toString();
 
-        if(RN.isEmpty() && FirstName.isEmpty() && LastName.isEmpty() && Password.isEmpty() ){
+        if(RN.isEmpty() || FirstName.isEmpty() || LastName.isEmpty() || Password.isEmpty() ){
             Toast.makeText(this, "Please complete the details", Toast.LENGTH_SHORT).show();
-        }else{
-            res = true;
+            return false;
         }
 
-        return res;
+        //Create new nurse object
+        Nurse nurse = new Nurse(RN, FirstName, LastName, Password);
+
+        // Insert the nurse into the database
+        mDatabase.nurse().insert(nurse);
+
+        Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
+
+        return true;
     }
 
     private void Cancel(){
-        Intent canIntent = new Intent(NurseRegActivity.this, RoomListActivity.class);
+        Intent canIntent = new Intent(NurseRegActivity.this, NurseLoginActivity.class);
         startActivity(canIntent);
     }
 
