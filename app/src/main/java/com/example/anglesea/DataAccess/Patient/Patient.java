@@ -21,7 +21,7 @@ public class Patient
     private long DOB;
 
     @ColumnInfo(name = "roomId")
-    private String roomId;
+    private int roomId;
 
     public String getNHI() {
         return NHI;
@@ -47,11 +47,11 @@ public class Patient
         this.DOB = DOB;
     }
 
-    public String getRoomId() {
+    public int getRoomId() {
         return roomId;
     }
 
-    public void setRoomId(String roomId) {
+    public void setRoomId(int roomId) {
         this.roomId = roomId;
     }
 }

@@ -18,8 +18,11 @@ public interface RoomDao
     @Query("SELECT * FROM room")
     List<Room> getAll();
 
-    @Query("SELECT * FROM room WHERE roomName = :teleporter")
-    Room getByName(String teleporter);
+    @Query("SELECT * FROM room WHERE roomName = :name")
+    Room getByName(String name);
+
+    @Query("SELECT * FROM room WHERE id = :id")
+    Room getById(int id);
 
     @Delete
     void delete(Room room);
