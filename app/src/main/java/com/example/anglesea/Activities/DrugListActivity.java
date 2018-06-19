@@ -44,11 +44,56 @@ public class DrugListActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drug_list);
 
+        populateDefaultDrugs();
+
         Lview = (ListView) findViewById(R.id.drugList);
         drugListButton = (FloatingActionButton) findViewById(R.id.drugListButton);
 
         populateListView();
     }//End of On Create
+
+    private void populateDefaultDrugs()
+    {
+        if(mDatabase.drug().getAll().size() <= 0)
+        {
+            Drug drug = new Drug();
+            drug.setName("Morphine Syrup");
+            drug.setRedDrug(true);
+            drug.setStrength(100);
+            mDatabase.drug().insert(drug);
+
+            Drug drug1 = new Drug();
+            drug1.setName("Paracetamol Syrup");
+            drug1.setStrength(250);
+            drug1.setRedDrug(false);
+            mDatabase.drug().insert(drug1);
+
+            Drug drug2 = new Drug();
+            drug2.setName("Paracetamol Syrup");
+            drug2.setStrength(120);
+            drug2.setRedDrug(false);
+            mDatabase.drug().insert(drug2);
+
+            Drug drug3 = new Drug();
+            drug3.setName("Ibupofen Syrup");
+            drug3.setStrength(100);
+            drug3.setRedDrug(false);
+            mDatabase.drug().insert(drug3);
+
+            Drug drug4 = new Drug();
+            drug4.setName("Cyclizine Syrup");
+            drug4.setStrength(50);
+            drug4.setRedDrug(false);
+            mDatabase.drug().insert(drug4);
+
+            Drug drug5 = new Drug();
+            drug5.setName("Droperidol Syrup");
+            drug5.setStrength(2.5f);
+            drug5.setRedDrug(false);
+            mDatabase.drug().insert(drug5);
+
+        }
+    }
 
     @Override
     protected void onResume()
