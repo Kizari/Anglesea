@@ -1,13 +1,15 @@
 package com.example.anglesea.Activities;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.anglesea.DataAccess.Nurse.Nurse;
 import com.example.anglesea.Entities.BaseActivity;
+import com.example.anglesea.NurseLoginActivity;
 import com.example.anglesea.R;
 
 public class NurseRegActivity extends BaseActivity {
@@ -34,24 +36,49 @@ public class NurseRegActivity extends BaseActivity {
         RegBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String RN = RNTxt.getText().toString().trim();
-                String FirstName = FNTxt.getText().toString().trim();
-                String LastName = LNTxt.getText().toString().trim();
-                String Password = PWTxt.getText().toString().trim();
 
-                //Create new nurse object
-                Nurse nurse = new Nurse();
-                nurse.setRN(RN);
-                nurse.setFirstName(FirstName);
-                nurse.setLastName(LastName);
-                nurse.setPassword(Password);
-
-                // Insert the patient into the database
-                mDatabase.nurse().insert(nurse);
+                validate();
 
             }
         });
 
+        CancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Cancel();
+            }
+        });
+
+    }
+
+    private Boolean validate() {
+
+
+
+        String RN = RNTxt.getText().toString().trim();
+        String FirstName = FNTxt.getText().toString();
+        String LastName = LNTxt.getText().toString();
+        String Password = PWTxt.getText().toString();
+
+        if(RN.isEmpty() || FirstName.isEmpty() || LastName.isEmpty() || Password.isEmpty() ){
+            Toast.makeText(this, "Please complete the details", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        //Create new nurse object
+        Nurse nurse = new Nurse(RN, FirstName, LastName, Password);
+
+        // Insert the nurse into the database
+        mDatabase.nurse().insert(nurse);
+
+        Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
+
+        return true;
+    }
+
+    private void Cancel(){
+        Intent canIntent = new Intent(NurseRegActivity.this, NurseLoginActivity.class);
+        startActivity(canIntent);
     }
 
 }

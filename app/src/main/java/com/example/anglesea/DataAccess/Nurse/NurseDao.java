@@ -17,11 +17,13 @@ import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 public interface NurseDao
 {
     @Insert(onConflict = IGNORE)
-    long insert(Nurse nurse);
-
+    void insert(Nurse nurse); // Nurse will be inserted with ID predefined, so we don't need to return the ID, therefore we make this void
 
     @Query("SELECT * FROM nurse")
     List<Nurse> getAll();
+
+    @Query("SELECT * FROM nurse WHERE RN = :RN")
+    Nurse getByRN(String RN);
 
     @Delete
     void delete(Nurse nurse);
