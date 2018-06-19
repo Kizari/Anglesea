@@ -24,36 +24,49 @@
             android:orientation="vertical">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RoomListActivity"
-                android:onClick="startRoomListActivity" />
+                android:onClick="startRoomListActivity"
+                android:text="RoomListActivity" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/generic_button_background"
+                android:onClick="startAddDrug"
                 android:text="AddDrug"
-                android:onClick="startAddDrug" />
+                android:textColor="@color/colorPrimary" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/generic_button_background"
+                android:onClick="startDrugListScreen"
                 android:text="DrugListScreen"
-                android:onClick="startDrugListScreen" />
+                android:textColor="@color/colorPrimary" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/generic_button_background"
+                android:onClick="startNurseLogin"
                 android:text="NurseLoginActivity"
-                android:onClick="startNurseLogin"/>
+                android:textColor="@color/colorPrimary" />
 
             <Button
                 android:id="@+id/button"
                 android:layout_width="173dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/generic_button_background"
                 android:onClick="startNurseReg"
-                android:text="NurseRegActivity" />
+                android:text="NurseRegActivity"
+                android:textColor="@color/colorPrimary" />
 
+            <Button
+                android:layout_width="173dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/generic_button_background"
+                android:onClick="startPatientSummary"
+                android:text="PatientSummary"
+                android:textColor="@color/colorPrimary" />
         </LinearLayout>
 
     </ScrollView>

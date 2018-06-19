@@ -55,4 +55,10 @@ public class MainActivity extends BaseActivity
         Intent intent = new Intent(this, NurseRegActivity.class);
         startActivity(intent);
     }
+
+    public void startPatientSummary(View v)
+    {
+        Intent intent = new Intent(this, PatientSummaryActivity.class);
+        startActivity(intent);
+    }
 }
