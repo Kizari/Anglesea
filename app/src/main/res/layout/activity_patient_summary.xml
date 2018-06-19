@@ -69,8 +69,6 @@
                 android:inputType="textPersonName"
                 android:text="Name" />
         </TableRow>
-
-        <TableRow></TableRow>
     </TableLayout>
 
 
