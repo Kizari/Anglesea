@@ -40,6 +40,8 @@ public class PatientSummaryActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_summary);
 
+        boolean x = true;
+
 
         fullNameTextView = findViewById(R.id.fullNameTextView);
         nhiNoTextView =  findViewById(R.id.nhiNoTextView);
