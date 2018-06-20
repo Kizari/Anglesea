@@ -18,16 +18,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.CalculationActivity" />
-        <activity android:name=".Activities.RoomListActivity" />
-        <activity android:name=".Activities.AddDrugActivity" />
-        <activity android:name=".Activities.DrugListActivity" />
-        <activity android:name=".Activities.IVOralActivity" />
-        <activity android:name=".Activities.NurseRegActivity" />
-        <activity android:name=".Activities.PatientSummaryActivity" />
-        <activity android:name=".NurseLoginActivity" />
-        <activity android:name=".PatientRegActivity" />
-        <activity android:name=".Activities.PatientDetailActivity"></activity>
+        <activity android:name=".Activities.CalculationActivity" android:label="Drug Administration" />
+        <activity android:name=".Activities.RoomListActivity" android:label="Hospital Overview" />
+        <activity android:name=".Activities.AddDrugActivity" android:label="Drug" />
+        <activity android:name=".Activities.DrugListActivity" android:label="Drug List" />
+        <activity android:name=".Activities.IVOralActivity" android:label="Administration Type" />
+        <activity android:name=".Activities.NurseRegActivity" android:label="Registration" />
+        <activity android:name=".Activities.PatientSummaryActivity" android:label="Visit Summary" />
+        <activity android:name=".NurseLoginActivity" android:label="Nurse Login" />
+        <activity android:name=".PatientRegActivity" android:label="Patient" />
+        <activity android:name=".Activities.PatientDetailActivity" android:label="Patient Detail"></activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

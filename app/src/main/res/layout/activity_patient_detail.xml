@@ -7,71 +7,124 @@
     tools:context=".Activities.PatientDetailActivity"
     android:background="@color/colorSecondary">
 
-    <TextView
-        android:id="@+id/textOverview"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="10dp"
-        android:text="Overview"
-        android:textColor="#ffffff" />
+    <LinearLayout style="@style/Frame" android:id="@+id/patient">
+        <LinearLayout style="@style/FrameHeader" android:id="@+id/heading">
+            <TextView
+                style="@style/Heading"
+                android:text="Patient Details" />
+            <Button style="@style/ButtonMini" android:background="@drawable/small_button_edit" />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textFullName"
-        android:text="Full Name"
-        android:layout_below="@+id/textOverview"
-        android:layout_margin="10dp"/>
+        <LinearLayout
+            android:layout_below="@+id/heading"
+            style="@style/Tabular"
+            android:id="@+id/name">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Patient:"
+                android:layout_weight="1" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textNHI"
-        android:text="NHI Number"
-        android:layout_below="@+id/textFullName"
-        android:layout_margin="10dp"/>
+            <TextView
+                android:id="@+id/textFullName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="Full Name" />
+        </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textRoom"
-        android:text="Room Number"
-        android:layout_below="@+id/textNHI"
-        android:layout_margin="10dp"/>
+        <LinearLayout
+            android:id="@+id/nhi"
+            style="@style/Tabular"
+            android:layout_below="@+id/name">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textAge"
-        android:text="Age"
-        android:layout_below="@+id/textRoom"
-        android:layout_margin="10dp"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="NHI:"
+                android:layout_weight="1" />
 
-    <TextView
-        android:id="@+id/textAllergies"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:paddingBottom="10dp"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:paddingTop="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Overview"
-        android:textColor="#ffffff"
-        android:layout_below="@+id/textAge"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:id="@+id/textNHI"
+                android:text="NHI Number"/>
 
-    <android.support.design.widget.FloatingActionButton
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/age"
+            android:layout_below="@+id/room"
+            style="@style/Tabular">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Age:"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:id="@+id/textAge"
+                android:text="Age"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/Frame"
+        android:layout_below="@+id/patient"
+        android:layout_above="@+id/buttons">
+
+        <LinearLayout
+            style="@style/FrameHeader"
+            android:id="@+id/allergies"
+            android:layout_below="@+id/patient">
+
+            <TextView
+                style="@style/Heading"
+                android:text="Patient Allergies"
+                android:layout_weight="1"/>
+
+            <Button style="@style/ButtonMini" android:background="@drawable/small_button_add" />
+            <Button style="@style/ButtonMini" android:background="@drawable/small_button_edit" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--<android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:src="@drawable/icon_add"
-        android:layout_margin="15dp"/>
+        android:layout_margin="15dp"/>-->
 
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        style="@style/Tabular"
+        android:id="@+id/buttons">
+
+        <Button
+            android:id="@+id/buttonAdminister"
+            style="@style/ButtonSmall"
+            android:layout_weight="1"
+            android:text="Administer"
+            android:onClick="buttonAdminister_clicked"/>
+
+        <Button
+            android:id="@+id/buttonDischarge"
+            style="@style/ButtonSmall"
+            android:layout_weight="1"
+            android:text="Discharge" />
+
+    </LinearLayout>
 
 </RelativeLayout>

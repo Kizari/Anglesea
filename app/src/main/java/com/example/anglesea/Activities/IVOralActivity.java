@@ -6,9 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.R;
 
-public class IVOralActivity extends AppCompatActivity {
+public class IVOralActivity extends BaseActivity {
 
     private ImageButton IVBtn;
     private ImageButton OralBtn;

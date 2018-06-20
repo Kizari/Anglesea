@@ -3,6 +3,7 @@ package com.example.anglesea.Activities;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -37,20 +38,18 @@ public class RoomListActivity extends BaseActivity
         row.setOrientation(LinearLayout.HORIZONTAL);
         row.setLayoutParams(lp);
 
+        int max = numberOfRooms - (numberOfRooms % roomsPerRow);
+
         int count = 1;
         int i;
-        for(i = 1; i <= numberOfRooms; i++)
+        for(i = 1; i <= max; i++)
         {
             // Create cell
-            Button button = new Button(this);
+            Button button = new Button(new ContextThemeWrapper(this, R.style.ButtonDoor), null, 0);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-            params.weight = 1;
+            params.weight = 2;
             params.setMargins(mHelper.px(5), mHelper.px(5), mHelper.px(5), mHelper.px(5));
             button.setLayoutParams(params);
-            button.setBackground(getResources().getDrawable(R.drawable.room_button_background));
-            button.setTextColor(getResources().getColor(R.color.colorAccent));
-            button.setTextSize(16);
-            button.setPadding(5, 5, 5, 5);
             button.setText(prefix + i);
 
             final String roomNo = prefix + i;
@@ -79,23 +78,51 @@ public class RoomListActivity extends BaseActivity
                 row.setOrientation(LinearLayout.HORIZONTAL);
                 row.setLayoutParams(lp);
 
-                // Reset the cell count
+                // Reset the counter
                 count = 1;
             }
         }
 
-        if(count > 1)
+        if((numberOfRooms % roomsPerRow) > 0)
         {
-            while(count <= roomsPerRow)
+            TextView tv = new TextView(this);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
+            params.weight = 1;
+            params.setMargins(mHelper.px(5), mHelper.px(5), mHelper.px(5), mHelper.px(5));
+            tv.setLayoutParams(params);
+            row.addView(tv);
+
+            for (i = max + 1; i <= numberOfRooms; i++)
             {
-                TextView tv = new TextView(this);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
-                params.weight = 1;
+                // Create cell
+                Button button = new Button(new ContextThemeWrapper(this, R.style.ButtonDoor), null, 0);
+                params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
+                params.weight = 2;
                 params.setMargins(mHelper.px(5), mHelper.px(5), mHelper.px(5), mHelper.px(5));
-                tv.setLayoutParams(params);
-                row.addView(tv);
-                count++;
+                button.setLayoutParams(params);
+                button.setText(prefix + i);
+
+                final String roomNo = prefix + i;
+                final Context context = mContext;
+                button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(context, PatientDetailActivity.class);
+                        intent.putExtra("room", roomNo);
+                        context.startActivity(intent);
+                    }
+                });
+
+                // Add the cell to the current row
+                row.addView(button);
             }
+
+            tv = new TextView(this);
+            params = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.MATCH_PARENT);
+            params.weight = 1;
+            params.setMargins(mHelper.px(5), mHelper.px(5), mHelper.px(5), mHelper.px(5));
+            tv.setLayoutParams(params);
+            row.addView(tv);
 
             container.addView(row);
         }
