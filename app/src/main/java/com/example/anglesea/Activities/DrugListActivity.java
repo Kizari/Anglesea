@@ -55,22 +55,17 @@ public class DrugListActivity extends BaseActivity {
     private void populateDefaultDrugs()
     {
         if(mDatabase.drug().getAll().size() <= 0)
-        {
-            Drug drug = new Drug();
-            drug.setName("Morphine Syrup");
-            drug.setRedDrug(true);
-            drug.setStrength(100);
-            mDatabase.drug().insert(drug);
 
+        {
             Drug drug1 = new Drug();
-            drug1.setName("Paracetamol Syrup");
-            drug1.setStrength(250);
+            drug1.setName("Cyclizine Syrup");
+            drug1.setStrength(50);
             drug1.setRedDrug(false);
             mDatabase.drug().insert(drug1);
 
             Drug drug2 = new Drug();
-            drug2.setName("Paracetamol Syrup");
-            drug2.setStrength(120);
+            drug2.setName("Droperidol Syrup");
+            drug2.setStrength(2.5f);
             drug2.setRedDrug(false);
             mDatabase.drug().insert(drug2);
 
@@ -81,16 +76,26 @@ public class DrugListActivity extends BaseActivity {
             mDatabase.drug().insert(drug3);
 
             Drug drug4 = new Drug();
-            drug4.setName("Cyclizine Syrup");
-            drug4.setStrength(50);
-            drug4.setRedDrug(false);
+            drug4.setName("Morphine Syrup");
+            drug4.setRedDrug(true);
+            drug4.setStrength(100);
             mDatabase.drug().insert(drug4);
 
             Drug drug5 = new Drug();
-            drug5.setName("Droperidol Syrup");
-            drug5.setStrength(2.5f);
+            drug5.setName("Paracetamol Syrup");
+            drug5.setStrength(250);
             drug5.setRedDrug(false);
             mDatabase.drug().insert(drug5);
+
+            Drug drug6 = new Drug();
+            drug6.setName("Paracetamol Syrup");
+            drug6.setStrength(120);
+            drug6.setRedDrug(false);
+            mDatabase.drug().insert(drug6);
+
+
+
+
 
         }
     }
