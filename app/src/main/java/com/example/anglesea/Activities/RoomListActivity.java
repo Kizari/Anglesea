@@ -19,28 +19,6 @@ import java.util.List;
 
 public class RoomListActivity extends BaseActivity
 {
-    private void databaseExample()
-    {
-        // Get reference to the database
-        DB db = DB.get(this);
-
-        // Create a new patient object
-        Patient patient = new Patient();
-        patient.setNHI("ABC1234");
-        patient.setFullName("John Smith");
-        patient.setDOB((new GregorianCalendar(1990, 1, 1).getTimeInMillis()));
-        patient.setRoomId("Rm10");
-
-        // Insert the patient into the database
-        db.patient().insert(patient);
-
-        // Select patient by room id
-        Patient patient2 = db.patient().getByRoom("Rm10");
-
-        // Delete the patient out of the database
-        db.patient().delete(patient2);
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -75,11 +53,13 @@ public class RoomListActivity extends BaseActivity
             button.setPadding(5, 5, 5, 5);
             button.setText(prefix + i);
 
+            final String roomNo = prefix + i;
             final Context context = mContext;
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, CalculationActivity.class);
+                    Intent intent = new Intent(context, PatientDetailActivity.class);
+                    intent.putExtra("room", roomNo);
                     context.startActivity(intent);
                 }
             });

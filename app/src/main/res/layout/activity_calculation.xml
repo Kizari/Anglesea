@@ -7,12 +7,6 @@
     android:background="@color/colorSecondary"
     tools:context=".Activities.CalculationActivity">
 
-    <View
-        android:id="@+id/topBar"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="@color/colorPrimaryDark" />
-
     <TextView
         android:id="@+id/textInputHeader"
         android:layout_width="match_parent"

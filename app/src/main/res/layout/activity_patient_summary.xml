@@ -1,9 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.PatientSummaryActivity">
+    tools:context=".Activities.PatientSummaryActivity"
+    android:background="@color/colorSecondary">
 
-</android.support.constraint.ConstraintLayout>
+    <Button
+        android:id="@+id/closeButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/generic_button_background"
+        android:layout_margin="10dp"
+        android:text="Close" />
+
+
+    <TextView
+        android:id="@+id/fullNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="DisplayFullName"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"/>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tableForm"
+        android:layout_below="@+id/fullNameTextView"
+        android:layout_margin="10dp">
+
+        <TableRow>
+            <TextView
+                android:id="@+id/nhiNoTextView"
+                android:layout_width="71dp"
+                android:layout_height="29dp"
+                android:layout_marginRight="40dp"
+                android:text="NHI NO:"
+                android:textSize="18sp"/>
+
+            <EditText
+                android:id="@+id/nhiEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:id="@+id/roomTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="ROOM NO:"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/roomEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Name" />
+        </TableRow>
+    </TableLayout>
+
+
+
+    <TextView
+        android:id="@+id/adminDrugTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tableForm"
+        android:background="@color/colorPrimary"
+        android:paddingBottom="10dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:paddingTop="10dp"
+        android:text="Administered drug"
+        android:textColor="#ffffff" />
+
+    <ListView
+        android:id="@+id/resultList"
+        android:layout_width="match_parent"
+        android:layout_height="299dp"
+        android:layout_alignBottom="@id/closeButton"
+        android:layout_alignTop="@+id/adminDrugTextView"
+        android:layout_marginTop="31dp">
+
+    </ListView>
+</RelativeLayout>

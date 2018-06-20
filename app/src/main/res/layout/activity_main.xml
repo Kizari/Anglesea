@@ -24,36 +24,34 @@
             android:orientation="vertical">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="RoomListActivity"
-                android:onClick="startRoomListActivity" />
+                android:onClick="startRoomListActivity"
+                android:text="Room List Activity"
+                style="@style/GenericButton" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="AddDrug"
-                android:onClick="startAddDrug" />
+                style="@style/GenericButton"
+                android:onClick="startAddDrug"
+                android:text="Add Drug Activity" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DrugListScreen"
-                android:onClick="startDrugListScreen" />
+                style="@style/GenericButton"
+                android:onClick="startDrugListScreen"
+                android:text="Drug List Activity" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NurseLoginActivity"
-                android:onClick="startNurseLogin"/>
+                style="@style/GenericButton"
+                android:onClick="startNurseLogin"
+                android:text="Nurse Login Activity" />
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="173dp"
-                android:layout_height="wrap_content"
+                style="@style/GenericButton"
                 android:onClick="startNurseReg"
-                android:text="NurseRegActivity" />
+                android:text="Nurse Reg Activity" />
 
+            <Button
+                style="@style/GenericButton"
+                android:onClick="startPatientSummary"
+                android:text="Patient Summary Activity" />
         </LinearLayout>
 
     </ScrollView>

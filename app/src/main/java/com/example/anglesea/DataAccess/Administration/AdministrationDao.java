@@ -1,4 +1,4 @@
-package com.example.anglesea.DataAccess.Drug;
+package com.example.anglesea.DataAccess.Administration;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
@@ -12,20 +12,17 @@ import java.util.List;
 import static android.arch.persistence.room.OnConflictStrategy.IGNORE;
 
 @Dao
-public interface DrugDao
+public interface AdministrationDao
 {
     @Insert(onConflict = IGNORE)
-    long insert(Drug drug);
+    long insert(Administration drug);
 
-    @Query("SELECT * FROM drug")
-    List<Drug> getAll();
+    @Query("SELECT * FROM administration")
+    List<Administration> getAll();
 
-    @Query("SELECT * FROM drug WHERE id = :id")
-    Drug getById(long id);
-
-    @Query("SELECT * FROM drug WHERE name = :name")
-    Drug getByName(String name);
+    @Query("SELECT * FROM administration WHERE NHI = :NHI")
+    List<Administration> getByNHI(String NHI);
 
     @Delete
-    void delete(Drug drug);
+    void delete(Administration drug);
 }
