@@ -8,12 +8,6 @@
     android:background="@color/colorSecondary"
     android:orientation="vertical">
 
-    <View
-        android:id="@+id/topBar"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="@color/colorPrimaryDark" />
-
     <TextView
         android:id="@+id/textDay"
         android:layout_width="match_parent"

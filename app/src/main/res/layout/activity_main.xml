@@ -25,48 +25,33 @@
 
             <Button
                 android:onClick="startRoomListActivity"
-                android:text="RoomListActivity" />
+                android:text="Room List Activity"
+                style="@style/GenericButton" />
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/generic_button_background"
+                style="@style/GenericButton"
                 android:onClick="startAddDrug"
-                android:text="AddDrug"
-                android:textColor="@color/colorPrimary" />
+                android:text="Add Drug Activity" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/generic_button_background"
+                style="@style/GenericButton"
                 android:onClick="startDrugListScreen"
-                android:text="DrugListScreen"
-                android:textColor="@color/colorPrimary" />
+                android:text="Drug List Activity" />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/generic_button_background"
+                style="@style/GenericButton"
                 android:onClick="startNurseLogin"
-                android:text="NurseLoginActivity"
-                android:textColor="@color/colorPrimary" />
+                android:text="Nurse Login Activity" />
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="173dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/generic_button_background"
+                style="@style/GenericButton"
                 android:onClick="startNurseReg"
-                android:text="NurseRegActivity"
-                android:textColor="@color/colorPrimary" />
+                android:text="Nurse Reg Activity" />
 
             <Button
-                android:layout_width="173dp"
-                android:layout_height="wrap_content"
-                android:background="@drawable/generic_button_background"
+                style="@style/GenericButton"
                 android:onClick="startPatientSummary"
-                android:text="PatientSummary"
-                android:textColor="@color/colorPrimary" />
+                android:text="Patient Summary Activity" />
         </LinearLayout>
 
     </ScrollView>
