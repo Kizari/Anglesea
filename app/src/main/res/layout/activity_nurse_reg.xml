@@ -1,127 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.anglesea.Activities.NurseRegActivity">
+    tools:context="com.example.anglesea.Activities.NurseRegActivity"
+    android:background="@color/colorSecondary"
+    android:orientation="vertical"
+    android:padding="5dp">
 
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="Nurse Registration"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
-    <GridLayout
-        android:id="@+id/gridLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp">
+        android:orientation="vertical"
+        android:layout_weight="1">
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
+            style="@style/HeadingBar"
+            android:background="@drawable/bg_frame_dark"
+            android:textColor="@color/textLight"
+            android:id="@+id/textDay"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignTop="@+id/gridLayout2"
-            android:text="RN Number:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp" />
+            android:text="Nurse Registration Form"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="15dp"/>
 
+        <TextView style="@style/FormLabel" android:text="RN NUMBER" android:layout_marginTop="20dp"/>
         <EditText
+            style="@style/AngleseaEditText"
             android:id="@+id/RNTxt"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="number" />
 
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="1"
-            android:text="First Name:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp" />
-
+        <TextView style="@style/FormLabel" android:text="FULL NAME"/>
         <EditText
+            style="@style/AngleseaEditText"
             android:id="@+id/FNTxt"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="1"
             android:ems="10"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName"/>
 
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="2"
-            android:text="Last Name:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp" />
-
+        <TextView style="@style/FormLabel" android:text="PASSWORD"/>
         <EditText
-            android:id="@+id/LNTxt"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="2"
-            android:ems="10"
-            android:inputType="textPersonName" />
-
-        <TextView
-            android:id="@+id/textView13"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_column="0"
-            android:layout_row="3"
-            android:text="Password:"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp" />
-
-        <EditText
+            style="@style/AngleseaEditText"
             android:id="@+id/PWTxt"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_column="1"
-            android:layout_row="3"
             android:ems="10"
             android:inputType="textPassword" />
-    </GridLayout>
 
-    <Button
-        android:id="@+id/CancelBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/gridLayout2"
-        android:layout_alignStart="@+id/gridLayout2"
-        android:layout_below="@+id/gridLayout2"
-        android:layout_marginTop="43dp"
-        android:background="@color/colorAccent"
-        android:text="CANCEL"
-        android:textColor="@color/colorSecondary" />
+        <TextView style="@style/FormLabel" android:text="CONFIRM PASSWORD"/>
+        <EditText
+            style="@style/AngleseaEditText"
+            android:id="@+id/PW2Txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/RegBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/gridLayout2"
-        android:layout_alignRight="@+id/gridLayout2"
-        android:layout_alignTop="@+id/CancelBtn"
-        android:background="@color/colorPrimary"
-        android:text="REGISTER"
-        android:textColor="@color/colorSecondary" />
-</RelativeLayout>
+        style="@style/ButtonSmall"
+        android:background="@drawable/bg_button_dark"
+        android:textColor="@color/textLight"
+        android:text="Register"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="12dp"
+        android:layout_marginBottom="20dp"/>
+
+    <!--<LinearLayout
+        android:id="@+id/buttons"
+        style="@style/Tabular"
+        android:layout_alignParentBottom="true"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/CancelBtn"
+            style="@style/ButtonSmall"
+            android:text="Cancel"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/RegBtn"
+            style="@style/ButtonSmall"
+            android:text="Register"
+            android:layout_weight="1" />
+
+    </LinearLayout>-->
+
+</LinearLayout>

@@ -13,11 +13,17 @@ public class Drug
     @ColumnInfo(name = "name")
     private String name;
 
-    @ColumnInfo(name = "strength")
-    private float strength;
+    @ColumnInfo(name = "mg")
+    private double mg;
+
+    @ColumnInfo(name = "ml")
+    private double ml;
 
     @ColumnInfo(name = "isRedDrug")
     private boolean isRedDrug;
+
+    @ColumnInfo(name = "isIntravenous")
+    private boolean isIntravenous;
 
     public long getId() {
         return id;
@@ -35,19 +41,35 @@ public class Drug
         this.name = name;
     }
 
-    public float getStrength() {
-        return strength;
-    }
-
-    public void setStrength(float strength) {
-        this.strength = strength;
-    }
-
     public boolean isRedDrug() {
         return isRedDrug;
     }
 
     public void setRedDrug(boolean redDrug) {
         isRedDrug = redDrug;
+    }
+
+    public boolean isIntravenous() {
+        return isIntravenous;
+    }
+
+    public void setIntravenous(boolean intravenous) {
+        isIntravenous = intravenous;
+    }
+
+    public double getMg() {
+        return mg;
+    }
+
+    public void setMg(double mg) {
+        this.mg = mg;
+    }
+
+    public double getMl() {
+        return ml;
+    }
+
+    public void setMl(double ml) {
+        this.ml = ml;
     }
 }

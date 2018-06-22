@@ -1,4 +1,4 @@
-package com.example.anglesea.Activities;
+/*package com.example.anglesea.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -62,3 +62,4 @@ public class MainActivity extends BaseActivity
         startActivity(intent);
     }
 }
+*/

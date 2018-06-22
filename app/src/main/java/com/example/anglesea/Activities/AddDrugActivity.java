@@ -1,4 +1,4 @@
-package com.example.anglesea.Activities;
+/*package com.example.anglesea.Activities;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -71,4 +71,4 @@ public class AddDrugActivity extends BaseActivity
         // Close this activity, go back to the list
         finish();
     }
-}
+}*/

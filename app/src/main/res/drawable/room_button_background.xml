@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
+    <!--<item>
         <shape>
             <solid android:color="@color/colorPrimaryDark" />
         </shape>
@@ -14,6 +14,12 @@
         <shape>
             <solid android:color="#2d2506" />
             <stroke android:width="2dp" android:color="#ccc" />
+        </shape>
+    </item>-->
+    <item>
+        <shape>
+            <gradient android:startColor="#fff" android:endColor="#eee" android:angle="270" />
+            <stroke android:color="@color/colorPrimary" android:width="2dp" />
         </shape>
     </item>
 </layer-list>

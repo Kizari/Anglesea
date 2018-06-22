@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.util.TypedValue;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -48,5 +49,18 @@ public class Helper
         }
 
         return age;
+    }
+
+    public static String format(double d)
+    {
+        if(d == (long)d)
+            return String.format("%d", (long)d);
+        else
+            return String.format("%s", d);
+    }
+
+    public static void toast(Context c, String message)
+    {
+        Toast.makeText(c, message, Toast.LENGTH_LONG).show();
     }
 }

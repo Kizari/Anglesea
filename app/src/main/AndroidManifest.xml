@@ -10,13 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activities.MainActivity"
-            android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:name=".Activities.MainActivity">
         </activity>
         <activity android:name=".Activities.CalculationActivity" android:label="Drug Administration" />
         <activity android:name=".Activities.RoomListActivity" android:label="Hospital Overview" />
@@ -25,7 +19,14 @@
         <activity android:name=".Activities.IVOralActivity" android:label="Administration Type" />
         <activity android:name=".Activities.NurseRegActivity" android:label="Registration" />
         <activity android:name=".Activities.PatientSummaryActivity" android:label="Visit Summary" />
-        <activity android:name=".NurseLoginActivity" android:label="Nurse Login" />
+        <activity android:name=".NurseLoginActivity" android:label="Nurse Login"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".PatientRegActivity" android:label="Patient" />
         <activity android:name=".Activities.PatientDetailActivity" android:label="Patient Detail"></activity>
 

@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondary"
+    tools:context=".Activities.DrugListActivity"
+    android:orientation="vertical"
+    android:paddingBottom="15dp"
+    android:paddingTop="5dp">
+
+    <LinearLayout
+        style="@style/Frame"
+        android:layout_weight="1">
+
+        <LinearLayout
+            style="@style/FrameHeader"
+            android:layout_marginBottom="0dp">
+            <TextView style="@style/Heading" android:text="Regular Drugs" />
+            <Button style="@style/ButtonMini" android:background="@drawable/small_button_add" android:onClick="addSafeDrug" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/drugList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/Frame"
+        android:layout_weight="1">
+
+        <LinearLayout
+            style="@style/FrameHeader"
+            android:layout_marginBottom="0dp">
+            <TextView style="@style/Heading" android:text="Dangerous Drugs" />
+            <Button style="@style/ButtonMini" android:background="@drawable/small_button_add" android:onClick="addDangerousDrug" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/dangerousDrugList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>
+
+<!--<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -56,4 +105,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/drugListButton" />
 
-</android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout>-->

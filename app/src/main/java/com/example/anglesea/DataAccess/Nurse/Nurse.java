@@ -12,11 +12,10 @@ import android.support.annotation.NonNull;
 @Entity
 public class Nurse
 {
-    public Nurse(@NonNull String RN, String FirstName, String LastName, String Password)
+    public Nurse(@NonNull String RN, String FullName, String Password)
     {
         this.RN = RN;
-        this.FirstName = FirstName;
-        this.LastName = LastName;
+        this.FullName = FullName;
         this.Password = Password;
     }
 
@@ -24,11 +23,8 @@ public class Nurse
     @PrimaryKey
     private String RN;
 
-    @ColumnInfo(name = "FirstName")
-    private String FirstName;
-
-    @ColumnInfo(name = "LastName")
-    private String LastName;
+    @ColumnInfo(name = "FullName")
+    private String FullName;
 
     @ColumnInfo(name = "Password")
     private String Password;
@@ -38,31 +34,23 @@ public class Nurse
         return RN;
     }
 
-    public void setRN(String NHI) {
+    public void setRN(@NonNull String RN) {
         this.RN = RN;
     }
 
-    public String getFirstName() {
-        return FirstName;
+    public String getFullName() {
+        return FullName;
     }
 
-    public void setFirstName(String fullName) {
-        this.FirstName = FirstName;
+    public void setFullName(String fullName) {
+        FullName = fullName;
     }
-
-    public String getLastName() {
-        return LastName;
-    }
-
-    public void setLastName(String LastName) {
-        this.LastName = LastName;
-    }
-
-    public String getPass(){return Password;}
-
-    public void setPassword(String password){this.LastName = Password;}
 
     public String getPassword() {
         return Password;
+    }
+
+    public void setPassword(String password) {
+        Password = password;
     }
 }

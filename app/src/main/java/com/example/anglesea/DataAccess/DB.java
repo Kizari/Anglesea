@@ -24,7 +24,7 @@ import java.util.GregorianCalendar;
         com.example.anglesea.DataAccess.Room.Room.class,
         Nurse.class,
         Administration.class
-}, version = 10)
+}, version = 13)
 public abstract class DB extends RoomDatabase
 {
     private static DB instance;
@@ -55,23 +55,54 @@ public abstract class DB extends RoomDatabase
         // Populate Nurse Table
         if(instance.nurse().getAll().size() < 1)
         {
-            Nurse nurse = new Nurse("ABC1234", "Joy", "Miller", "password");
+            Nurse nurse = new Nurse("ABC1234", "Joy Miller", "password");
             instance.nurse().insert(nurse);
         }
 
         // Populate Drug Table
         if(instance.drug().getAll().size() < 1)
         {
-            Drug drug = new Drug();
-            drug.setName("Paracetamol");
-            drug.setStrength(20.0f);
-            drug.setRedDrug(false);
-            instance.drug().insert(drug);
-            drug = new Drug();
-            drug.setName("Morphine");
-            drug.setStrength(15.0f);
-            drug.setRedDrug(true);
-            instance.drug().insert(drug);
+            Drug drug5 = new Drug();
+            drug5.setName("Paracetamol Syrup");
+            drug5.setMg(250);
+            drug5.setMl(250);
+            drug5.setRedDrug(false);
+            instance.drug().insert(drug5);
+
+            Drug drug6 = new Drug();
+            drug6.setName("Paracetamol Syrup");
+            drug6.setMg(120);
+            drug6.setMl(5);
+            drug6.setRedDrug(false);
+            instance.drug().insert(drug6);
+
+            Drug drug3 = new Drug();
+            drug3.setName("Ibupofen Syrup");
+            drug3.setMg(100);
+            drug3.setMl(5);
+            drug3.setRedDrug(false);
+            instance.drug().insert(drug3);
+
+            Drug drug4 = new Drug();
+            drug4.setName("Morphine Syrup");
+            drug4.setRedDrug(true);
+            drug4.setMg(100);
+            drug4.setMl(5);
+            instance.drug().insert(drug4);
+
+            Drug drug1 = new Drug();
+            drug1.setName("Cyclizine Syrup");
+            drug1.setMg(50);
+            drug1.setMl(1);
+            drug1.setRedDrug(false);
+            instance.drug().insert(drug1);
+
+            Drug drug2 = new Drug();
+            drug2.setName("Droperidol Syrup");
+            drug2.setMg(2.5);
+            drug2.setMl(1);
+            drug2.setRedDrug(false);
+            instance.drug().insert(drug2);
         }
 
         // Populate Room Table

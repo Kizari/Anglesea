@@ -10,6 +10,8 @@
 
     <TextView
         style="@style/HeadingBar"
+        android:background="@drawable/bg_frame_dark"
+        android:textColor="@color/textLight"
         android:id="@+id/textDay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,6 +38,8 @@
 
     <TextView
         style="@style/HeadingBar"
+        android:background="@drawable/bg_frame_dark"
+        android:textColor="@color/textLight"
         android:id="@+id/textNight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

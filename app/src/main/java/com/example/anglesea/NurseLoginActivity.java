@@ -2,6 +2,7 @@ package com.example.anglesea;
 
 import android.arch.persistence.room.Query;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.anglesea.Activities.MainActivity;
+import com.example.anglesea.Activities.NurseRegActivity;
+import com.example.anglesea.Activities.RoomListActivity;
 import com.example.anglesea.DataAccess.Nurse.Nurse;
 import com.example.anglesea.Entities.BaseActivity;
 
@@ -23,22 +25,22 @@ public class NurseLoginActivity extends BaseActivity {
     private TextView Login;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
+        SystemClock.sleep(1000);
+        setTheme(R.style.AppTheme);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nurse_login);
-
-        // Create the test nurse account if it doesn't exist
-        if(mDatabase.nurse().getByRN("ABC123") == null)
-        {
-            Nurse nurse = new Nurse("ABC123", "Aamina", "Ahmed", "password");
-            mDatabase.nurse().insert(nurse);
-        }
 
         //Setting the above variables with id's availabe in the xml
 
         RNNumber = (TextView)findViewById(R.id.txt_RNnumber);
         Password = (TextView)findViewById(R.id.txt_Password);
         Login = (Button)findViewById(R.id.btn_Login);
+
+        RNNumber.setText("ABC1234");
+        Password.setText("password");
 
         //sets the button with a listener so that it can perform when its clicked
         Login.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +56,7 @@ public class NurseLoginActivity extends BaseActivity {
 
         if(userName.equals(""))
         {
-            Toast.makeText(this, "Please enter your RN", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please enter your RN number", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -64,7 +66,7 @@ public class NurseLoginActivity extends BaseActivity {
         {
             // If it gets here, there was no nurse matching the RN the user entered
             // Show a message to the user to let them know the RN is wrong
-            Toast.makeText(this, "No nurse found for this RN.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Incorrect login details", Toast.LENGTH_LONG).show();
 
             // Stop validating because there is no nurse to validate
             return;
@@ -76,19 +78,25 @@ public class NurseLoginActivity extends BaseActivity {
         if(userPassword.equals(nurse.getPassword()))
         {
             // Password matched so go to next activity
-            Toast.makeText(this, "Password is correct!", Toast.LENGTH_LONG).show();
-            //Intent intent  = new Intent(MainActivity.this, SecondActivity.class);
-            //startActivity(intent);
+            Intent intent  = new Intent(this, RoomListActivity.class);
+            startActivity(intent);
+            finish();
         }
         else if(userPassword.equals(""))
         {
-            Toast.makeText(this, "Please enter a password", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please enter your password", Toast.LENGTH_LONG).show();
         }
         else
         {
             // Password didn't match so tell the user it was wrong
-            Toast.makeText(this, "Incorrect password.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Incorrect login details", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void startRegistration(View v)
+    {
+        Intent intent = new Intent(this, NurseRegActivity.class);
+        startActivity(intent);
     }
 
 }

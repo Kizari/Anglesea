@@ -29,8 +29,8 @@ public class BaseActivity extends AppCompatActivity
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(s);
 
-        // If this is not MainActivity, we don't want a back button if it's the first activity
-        if(!getClass().getSimpleName().equals("MainActivity"))
+        // We exclude the back button from the activities in the if statement
+        if(!getClass().getSimpleName().equals("MainActivity") && !getClass().getSimpleName().equals("NurseLoginActivity") && !getClass().getSimpleName().equals("RoomListActivity"))
         {
             // Add the back button to the action bar
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);

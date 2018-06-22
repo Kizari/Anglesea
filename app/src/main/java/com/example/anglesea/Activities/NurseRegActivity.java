@@ -26,11 +26,10 @@ public class NurseRegActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nurse_reg);
 
-        CancelBtn = (Button) findViewById(R.id.CancelBtn);
+        //CancelBtn = (Button) findViewById(R.id.CancelBtn);
         RegBtn = (Button) findViewById(R.id.RegBtn);
         RNTxt = (EditText) findViewById(R.id.RNTxt);
         FNTxt = (EditText) findViewById(R.id.FNTxt);
-        LNTxt = (EditText) findViewById(R.id.LNTxt);
         PWTxt = (EditText) findViewById(R.id.PWTxt);
 
         RegBtn.setOnClickListener(new View.OnClickListener() {
@@ -42,12 +41,12 @@ public class NurseRegActivity extends BaseActivity {
             }
         });
 
-        CancelBtn.setOnClickListener(new View.OnClickListener() {
+        /*CancelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Cancel();
             }
-        });
+        });*/
 
     }
 
@@ -56,17 +55,17 @@ public class NurseRegActivity extends BaseActivity {
 
 
         String RN = RNTxt.getText().toString().trim();
-        String FirstName = FNTxt.getText().toString();
-        String LastName = LNTxt.getText().toString();
+        String FullName = FNTxt.getText().toString();
         String Password = PWTxt.getText().toString();
 
-        if(RN.isEmpty() || FirstName.isEmpty() || LastName.isEmpty() || Password.isEmpty() ){
-            Toast.makeText(this, "Please complete the details", Toast.LENGTH_SHORT).show();
+        if(RN.isEmpty() || FullName.isEmpty()  || Password.isEmpty() )
+        {
+            Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             return false;
         }
 
         //Create new nurse object
-        Nurse nurse = new Nurse(RN, FirstName, LastName, Password);
+        Nurse nurse = new Nurse(RN, FullName, Password);
 
         // Insert the nurse into the database
         mDatabase.nurse().insert(nurse);

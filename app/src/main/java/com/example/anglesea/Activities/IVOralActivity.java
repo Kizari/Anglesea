@@ -26,7 +26,8 @@ public class IVOralActivity extends BaseActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(IVOralActivity.this, AddDrugActivity.class);
+                Intent intent = new Intent(IVOralActivity.this, DrugListActivity.class);
+                intent.putExtra("isIntravenous", true);
                 startActivity(intent);
             }
         });
@@ -35,7 +36,8 @@ public class IVOralActivity extends BaseActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(IVOralActivity.this, AddDrugActivity.class);
+                Intent intent = new Intent(IVOralActivity.this, DrugListActivity.class);
+                intent.putExtra("isIntravenous", false);
                 startActivity(intent);
             }
         });

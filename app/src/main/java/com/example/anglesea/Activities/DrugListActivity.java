@@ -1,10 +1,15 @@
 package com.example.anglesea.Activities;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,8 +26,10 @@ import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import com.example.anglesea.DataAccess.Drug.Drug;
+import com.example.anglesea.Dialogs.AddOrEditDrugDialog;
 import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.DataAccess.DB;
+import com.example.anglesea.Entities.Helper;
 import com.example.anglesea.R;
 
 import java.util.ArrayList;
@@ -33,112 +40,109 @@ import static java.lang.String.valueOf;
 public class DrugListActivity extends BaseActivity {
 
     private static final String TAG ="ListDatActivity";
-    private ListView Lview, drugList;
+    private ListView safeList, dangerousList;
     private EditText drugId;
-    private FloatingActionButton drugListButton;
+    private boolean isIntravenous;
+
+    private List<Drug> mSafeDrugs;
+    private List<Drug> mDangerousDrugs;
+
+    private DrugListAdapter mSafeAdapter;
+    private DrugListAdapter mDangerousAdapter;
+
+
+    //private FloatingActionButton drugListButton;
 
     //  private floatingActionButton addDrug;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drug_list);
 
-        populateDefaultDrugs();
+        isIntravenous = getIntent().getExtras().getBoolean("isIntravenous");
+        String title;
+        if(isIntravenous)
+            title = "Intravenous Drugs";
+        else
+            title = "Oral Drugs";
 
-        Lview = (ListView) findViewById(R.id.drugList);
-        drugListButton = (FloatingActionButton) findViewById(R.id.drugListButton);
+        SpannableString s = new SpannableString(title);
+        s.setSpan(new TypefaceSpan("Lato"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        // Update the action bar title with the TypefaceSpan instance
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(s);
+
+        safeList = findViewById(R.id.drugList);
+        dangerousList = findViewById(R.id.dangerousDrugList);
+
+        //drugListButton = (FloatingActionButton) findViewById(R.id.drugListButton);
 
         populateListView();
     }//End of On Create
 
-    private void populateDefaultDrugs()
+    private void populateListView()
     {
-        if(mDatabase.drug().getAll().size() <= 0)
+        Log.d(TAG,"populateListView: Display list of drugs");
 
+        //Retrieve list from database and populate list view
+        mSafeDrugs = mDatabase.drug().getAllSafe(isIntravenous);
+        mDangerousDrugs = mDatabase.drug().getAllDangerous(isIntravenous);
+
+        //Create the list adapter and set
+        mSafeAdapter = new DrugListAdapter(this, mSafeDrugs);
+        mDangerousAdapter = new DrugListAdapter(this, mDangerousDrugs);
+
+        safeList.setAdapter(mSafeAdapter);
+        dangerousList.setAdapter(mDangerousAdapter);
+    }//End of Populate View
+
+    public void addSafeDrug(View v)
+    {
+        AddOrEditDrugDialog.Create((DrugListActivity)this, null, false);
+    }
+
+    public void addDangerousDrug(View v)
+    {
+        AddOrEditDrugDialog.Create((DrugListActivity)this, null, true);
+    }
+
+    public void removeDrug(Drug drug)
+    {
+        if(drug.isRedDrug())
         {
-            Drug drug1 = new Drug();
-            drug1.setName("Cyclizine Syrup");
-            drug1.setStrength(50);
-            drug1.setRedDrug(false);
-            mDatabase.drug().insert(drug1);
-
-            Drug drug2 = new Drug();
-            drug2.setName("Droperidol Syrup");
-            drug2.setStrength(2.5f);
-            drug2.setRedDrug(false);
-            mDatabase.drug().insert(drug2);
-
-            Drug drug3 = new Drug();
-            drug3.setName("Ibupofen Syrup");
-            drug3.setStrength(100);
-            drug3.setRedDrug(false);
-            mDatabase.drug().insert(drug3);
-
-            Drug drug4 = new Drug();
-            drug4.setName("Morphine Syrup");
-            drug4.setRedDrug(true);
-            drug4.setStrength(100);
-            mDatabase.drug().insert(drug4);
-
-            Drug drug5 = new Drug();
-            drug5.setName("Paracetamol Syrup");
-            drug5.setStrength(250);
-            drug5.setRedDrug(false);
-            mDatabase.drug().insert(drug5);
-
-            Drug drug6 = new Drug();
-            drug6.setName("Paracetamol Syrup");
-            drug6.setStrength(120);
-            drug6.setRedDrug(false);
-            mDatabase.drug().insert(drug6);
-
-
-
-
-
+            mDangerousDrugs.remove(drug);
+            mDangerousAdapter.notifyDataSetChanged();
+        }
+        else
+        {
+            mSafeDrugs.remove(drug);
+            mSafeAdapter.notifyDataSetChanged();
         }
     }
 
-    @Override
-    protected void onResume()
+    public void addDrug(Drug drug)
     {
-        super.onResume();
-        ListAdapter adapter = new DrugListAdapter(this, mDatabase.drug().getAll());
-        Lview.setAdapter(adapter);
+        if(drug.isRedDrug())
+        {
+            mDangerousDrugs.add(drug);
+            mDangerousAdapter.notifyDataSetChanged();
+        }
+        else
+        {
+            mSafeDrugs.add(drug);
+            mSafeAdapter.notifyDataSetChanged();
+        }
     }
 
-    private void populateListView(){
-        Log.d(TAG,"populateListView: Display list of drugs");
-        //Retrieve list from database and populate list view
-        List<Drug> listDrugs = mDatabase.drug().getAll();
-
-        //Create the list adapter and set
-        ListAdapter adapter = new DrugListAdapter(this, listDrugs);
-        Lview.setAdapter(adapter);
-
-        //Set an onItemListener to the ListView
-        Lview.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
-            {
-                Drug drug = (Drug)adapterView.getItemAtPosition(i);
-                Log.d(TAG,"onItemClick: You Clicked on " + drug.getName());
-                Intent edit = new Intent(DrugListActivity.this,AddDrugActivity.class);
-                edit.putExtra("Id", drug.getId());
-                edit.putExtra("drugName", drug.getName());
-                startActivity(edit);
-            }
-        }); 
-    }//End of Populate View
-
-
-
-    public void listOnClick(View view)
+    public void updateDrug(Drug drug)
     {
-        Intent i = new Intent(this,AddDrugActivity.class);
-        startActivity(i);
+        if(drug.isRedDrug())
+            mDangerousAdapter.notifyDataSetChanged();
+        else
+            mSafeAdapter.notifyDataSetChanged();
     }
 
     private class DrugListAdapter extends ArrayAdapter<Drug>
@@ -157,25 +161,39 @@ public class DrugListActivity extends BaseActivity {
             TextView name = convertView.findViewById(R.id.textName);
             TextView strength = convertView.findViewById(R.id.textStrength);
             LinearLayout layout = convertView.findViewById(R.id.layout);
-            Button delete = convertView.findViewById(R.id.deleteButton);
+            Button edit = convertView.findViewById(R.id.editButton);
 
             final Drug drug = getItem(position);
 
             name.setText(drug.getName());
-            strength.setText(valueOf(drug.getStrength()));
+            String strengthString = Helper.format(drug.getMg()) + " mg / " + Helper.format(drug.getMl()) + "ml";
+            strength.setText(strengthString);
 
-            delete.setOnClickListener(new View.OnClickListener()
+            edit.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
                 {
-                    mDatabase.drug().delete(drug);
-                    onResume();
+                    AddOrEditDrugDialog.Create((DrugListActivity)mContext, drug, drug.isRedDrug());
                 }
             });
 
             if(drug.isRedDrug())
-                layout.setBackgroundColor(getResources().getColor(R.color.redDrug));
+            {
+                name.setTextColor(getResources().getColor(R.color.redDrug));
+                strength.setTextColor(getResources().getColor(R.color.redDrug));
+            }
+
+            convertView.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    Intent intent = new Intent(mContext, CalculationActivity.class);
+                    intent.putExtra("drugId", drug.getId());
+                    startActivity(intent);
+                }
+            });
 
             return convertView;
         }
