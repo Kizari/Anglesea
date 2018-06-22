@@ -32,6 +32,14 @@
         android:padding="10dp"
         android:orientation="vertical">
 
+        <TextView
+            style="@style/FormLabel"
+            android:text="Drug Name"/>
+
+        <EditText
+            android:id="@+id/editName"
+            style="@style/AngleseaEditText" />
+
         <LinearLayout
             style="@style/Tabular"
             android:padding="0dp"
@@ -65,14 +73,6 @@
 
         </LinearLayout>
 
-        <TextView
-            style="@style/FormLabel"
-            android:text="Drug Name"/>
-
-        <EditText
-            android:id="@+id/editName"
-            style="@style/AngleseaEditText" />
-
         <RadioGroup style="@style/Tabular">
             <RadioButton
                 android:id="@+id/radioOral"
@@ -86,7 +86,22 @@
                 android:layout_height="wrap_content"
                 android:text="Intravenous"
                 android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/radioBoth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Both"
+                android:layout_weight="1"/>
         </RadioGroup>
+
+        <CheckBox
+            android:id="@+id/checkDangerous"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mark as Dangerous Drug"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"/>
 
         <LinearLayout
             style="@style/Tabular"

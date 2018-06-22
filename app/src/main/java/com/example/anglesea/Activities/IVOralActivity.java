@@ -1,11 +1,11 @@
 package com.example.anglesea.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.example.anglesea.Entities.DrugType;
 import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.R;
 
@@ -27,7 +27,7 @@ public class IVOralActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(IVOralActivity.this, DrugListActivity.class);
-                intent.putExtra("isIntravenous", true);
+                intent.putExtra("drugType", DrugType.INTRAVENOUS);
                 startActivity(intent);
             }
         });
@@ -37,7 +37,7 @@ public class IVOralActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(IVOralActivity.this, DrugListActivity.class);
-                intent.putExtra("isIntravenous", false);
+                intent.putExtra("drugType", DrugType.ORAL);
                 startActivity(intent);
             }
         });

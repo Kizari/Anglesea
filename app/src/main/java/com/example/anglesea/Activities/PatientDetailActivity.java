@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.anglesea.DataAccess.Patient.Patient;
 import com.example.anglesea.DataAccess.Room.Room;
+import com.example.anglesea.Dialogs.DrugTypeDialog;
 import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.R;
 
@@ -50,8 +51,10 @@ public class PatientDetailActivity extends BaseActivity
 
     public void buttonAdminister_clicked(View v)
     {
-        Intent intent = new Intent(this, IVOralActivity.class);
+        /*Intent intent = new Intent(this, IVOralActivity.class);
         intent.putExtra("nhi", patient.getNHI());
-        startActivity(intent);
+        startActivity(intent);*/
+
+        DrugTypeDialog.Create(this, patient.getNHI());
     }
 }

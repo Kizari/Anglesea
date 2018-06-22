@@ -4,9 +4,10 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.TypeConverters;
 import android.arch.persistence.room.Update;
 
-import com.example.anglesea.DataAccess.Patient.Patient;
+import com.example.anglesea.Entities.DrugType;
 
 import java.util.List;
 
@@ -21,11 +22,11 @@ public interface DrugDao
     @Query("SELECT * FROM drug")
     List<Drug> getAll();
 
-    @Query("SELECT * FROM drug WHERE isRedDrug = 0 AND isIntravenous = :isIntravenous")
-    List<Drug> getAllSafe(boolean isIntravenous);
+    @Query("SELECT * FROM drug WHERE isDangerous = 0 AND type = :type OR type = 3")
+    List<Drug> getAllSafe(short type);
 
-    @Query("SELECT * FROM drug WHERE isRedDrug = 1 AND isIntravenous = :isIntravenous")
-    List<Drug> getAllDangerous(boolean isIntravenous);
+    @Query("SELECT * FROM drug WHERE isDangerous = 1 AND type = :type OR type = 3")
+    List<Drug> getAllDangerous(short type);
 
     @Query("SELECT * FROM drug WHERE id = :id")
     Drug getById(long id);

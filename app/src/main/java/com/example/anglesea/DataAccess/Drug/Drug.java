@@ -3,6 +3,10 @@ package com.example.anglesea.DataAccess.Drug;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.arch.persistence.room.TypeConverter;
+import android.arch.persistence.room.TypeConverters;
+
+import com.example.anglesea.Entities.DrugType;
 
 @Entity
 public class Drug
@@ -19,11 +23,11 @@ public class Drug
     @ColumnInfo(name = "ml")
     private double ml;
 
-    @ColumnInfo(name = "isRedDrug")
-    private boolean isRedDrug;
+    @ColumnInfo(name = "isDangerous")
+    private boolean isDangerous;
 
-    @ColumnInfo(name = "isIntravenous")
-    private boolean isIntravenous;
+    @ColumnInfo(name = "type")
+    private short type;
 
     public long getId() {
         return id;
@@ -41,20 +45,20 @@ public class Drug
         this.name = name;
     }
 
-    public boolean isRedDrug() {
-        return isRedDrug;
+    public boolean isDangerous() {
+        return isDangerous;
     }
 
-    public void setRedDrug(boolean redDrug) {
-        isRedDrug = redDrug;
+    public void setDangerous(boolean dangerous) {
+        isDangerous = dangerous;
     }
 
-    public boolean isIntravenous() {
-        return isIntravenous;
+    public short getType() {
+        return type;
     }
 
-    public void setIntravenous(boolean intravenous) {
-        isIntravenous = intravenous;
+    public void setType(short type) {
+        this.type = type;
     }
 
     public double getMg() {

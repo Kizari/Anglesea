@@ -6,6 +6,6 @@
     <color name="colorSecondary">#f9f0d1</color>
     <color name="colorFrame">#f9f0d1</color>
     <color name="black">#000000</color>
-    <color name="redDrug">#ff0000</color>
+    <color name="dangerous">#ff0000</color>
     <color name="textLight">#efefef</color>
 </resources>

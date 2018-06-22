@@ -14,6 +14,7 @@ import com.example.anglesea.DataAccess.Nurse.NurseDao;
 import com.example.anglesea.DataAccess.Patient.Patient;
 import com.example.anglesea.DataAccess.Patient.PatientDao;
 import com.example.anglesea.DataAccess.Room.RoomDao;
+import com.example.anglesea.Entities.DrugType;
 
 import java.util.GregorianCalendar;
 
@@ -24,7 +25,7 @@ import java.util.GregorianCalendar;
         com.example.anglesea.DataAccess.Room.Room.class,
         Nurse.class,
         Administration.class
-}, version = 13)
+}, version = 16)
 public abstract class DB extends RoomDatabase
 {
     private static DB instance;
@@ -65,43 +66,49 @@ public abstract class DB extends RoomDatabase
             Drug drug5 = new Drug();
             drug5.setName("Paracetamol Syrup");
             drug5.setMg(250);
-            drug5.setMl(250);
-            drug5.setRedDrug(false);
+            drug5.setMl(5);
+            drug5.setDangerous(false);
+            drug5.setType(DrugType.ORAL);
             instance.drug().insert(drug5);
 
             Drug drug6 = new Drug();
             drug6.setName("Paracetamol Syrup");
             drug6.setMg(120);
             drug6.setMl(5);
-            drug6.setRedDrug(false);
+            drug6.setDangerous(false);
+            drug6.setType(DrugType.ORAL);
             instance.drug().insert(drug6);
 
             Drug drug3 = new Drug();
             drug3.setName("Ibupofen Syrup");
             drug3.setMg(100);
             drug3.setMl(5);
-            drug3.setRedDrug(false);
+            drug3.setDangerous(false);
+            drug3.setType(DrugType.ORAL);
             instance.drug().insert(drug3);
 
             Drug drug4 = new Drug();
             drug4.setName("Morphine Syrup");
-            drug4.setRedDrug(true);
+            drug4.setDangerous(true);
             drug4.setMg(100);
             drug4.setMl(5);
+            drug4.setType(DrugType.ORAL);
             instance.drug().insert(drug4);
 
             Drug drug1 = new Drug();
             drug1.setName("Cyclizine Syrup");
             drug1.setMg(50);
             drug1.setMl(1);
-            drug1.setRedDrug(false);
+            drug1.setDangerous(false);
+            drug1.setType(DrugType.ORAL);
             instance.drug().insert(drug1);
 
             Drug drug2 = new Drug();
             drug2.setName("Droperidol Syrup");
             drug2.setMg(2.5);
             drug2.setMl(1);
-            drug2.setRedDrug(false);
+            drug2.setDangerous(false);
+            drug2.setType(DrugType.ORAL);
             instance.drug().insert(drug2);
         }
 

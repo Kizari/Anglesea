@@ -9,6 +9,8 @@
         <!--<item name="actionBarTheme">@style/AppTheme.AppBarOverlay</item>-->
         <item name="android:textColor">#000000</item>
         <item name="android:textViewStyle">@style/MainText</item>
+        <item name="android:radioButtonStyle">@style/MainRadioButton</item>
+        <item name="android:checkboxStyle">@style/MainCheckBox</item>
     </style>
 
     <!--<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
@@ -16,6 +18,18 @@
         <item name="android:background">@color/colorPrimary</item>
         <item name="android:fontFamily">@font/lato</item>
     </style>-->
+
+    <style name="MainCheckBox" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:textColor">#666666</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MainRadioButton" parent="@android:style/Widget.CompoundButton.RadioButton">
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:textColor">#666666</item>
+        <item name="android:textSize">14sp</item>
+    </style>
 
     <style name="MainText" parent="@android:style/TextAppearance.Medium">
         <item name="android:fontFamily">@font/lato</item>

@@ -1,25 +1,22 @@
 package com.example.anglesea.Dialogs;
 
-import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.anglesea.Activities.DrugListActivity;
 import com.example.anglesea.DataAccess.DB;
 import com.example.anglesea.DataAccess.Drug.Drug;
+import com.example.anglesea.Entities.DrugType;
 import com.example.anglesea.Entities.Helper;
 import com.example.anglesea.R;
-
-import java.util.List;
 
 public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
 {
@@ -37,7 +34,8 @@ public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
 
     EditText editMg, editMl, editName;
     Button buttonSave, buttonClose, buttonDelete;
-    RadioButton radioOral, radioIV;
+    RadioButton radioOral, radioIV, radioBoth;
+    CheckBox checkDangerous;
 
     private AddOrEditDrugDialog(DrugListActivity activity, Drug drug, boolean isDangerous)
     {
@@ -64,6 +62,8 @@ public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
 
         radioOral = findViewById(R.id.radioOral);
         radioIV = findViewById(R.id.radioIV);
+        radioBoth = findViewById(R.id.radioBoth);
+        checkDangerous = findViewById(R.id.checkDangerous);
 
         TextView textTitle = findViewById(R.id.textTitle);
         editMg = findViewById(R.id.editMg);
@@ -73,8 +73,8 @@ public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
         if(mDrug == null)
         {
             textTitle.setText("New Drug");
+            buttonDelete.setText("Cancel");
             mDrug = new Drug();
-            mDrug.setRedDrug(mIsDangerous);
         }
         else
         {
@@ -83,10 +83,15 @@ public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
             editMg.setText(Helper.format(mDrug.getMg()));
             editMl.setText(Helper.format(mDrug.getMl()));
 
-            if(mDrug.isIntravenous())
+            if(mDrug.getType() == DrugType.INTRAVENOUS)
                 radioIV.toggle();
-            else
+            else if(mDrug.getType() == DrugType.ORAL)
                 radioOral.toggle();
+            else
+                radioBoth.toggle();
+
+            if(mDrug.isDangerous())
+                checkDangerous.setChecked(true);
         }
     }
 
@@ -99,7 +104,7 @@ public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
         }
         else if(!radioOral.isChecked() && !radioIV.isChecked())
         {
-            Helper.toast(mActivity, "Please select either Oral or Intravenous");
+            Helper.toast(mActivity, "Please select either Oral, Intravenous, or Both");
             return;
         }
 
@@ -117,10 +122,19 @@ public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
             return;
         }
 
+        short drugType;
+        if(radioIV.isChecked())
+            drugType = DrugType.INTRAVENOUS;
+        else if(radioOral.isChecked())
+            drugType = DrugType.ORAL;
+        else
+            drugType = DrugType.BOTH;
+
         mDrug.setMg(mg);
         mDrug.setMl(ml);
         mDrug.setName(editName.getText().toString());
-        mDrug.setIntravenous(radioIV.isChecked());
+        mDrug.setType(drugType);
+        mDrug.setDangerous(checkDangerous.isChecked());
         DB db = DB.get(mActivity);
 
         if(mDrug.getId() == 0)
