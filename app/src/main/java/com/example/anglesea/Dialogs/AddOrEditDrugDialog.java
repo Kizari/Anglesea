@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import com.example.anglesea.Activities.DrugListActivity;
+import com.example.anglesea.Activities.PatientDetailActivity;
 import com.example.anglesea.DataAccess.DB;
 import com.example.anglesea.DataAccess.Drug.Drug;
 import com.example.anglesea.Entities.DrugType;
@@ -20,15 +20,15 @@ import com.example.anglesea.R;
 
 public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
 {
-    public static AddOrEditDrugDialog Create(DrugListActivity activity, Drug drug, boolean isDangerous)
+    public static AddOrEditDrugDialog Create(PatientDetailActivity activity, Drug drug, boolean isDangerous)
     {
-        AddOrEditDrugDialog dialog = new AddOrEditDrugDialog((DrugListActivity)activity, drug, isDangerous);
+        AddOrEditDrugDialog dialog = new AddOrEditDrugDialog((PatientDetailActivity)activity, drug, isDangerous);
         dialog.show();
         dialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         return dialog;
     }
 
-    private DrugListActivity mActivity;
+    private PatientDetailActivity mActivity;
     private Drug mDrug;
     private boolean mIsDangerous;
 
@@ -37,7 +37,7 @@ public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
     RadioButton radioOral, radioIV, radioBoth;
     CheckBox checkDangerous;
 
-    private AddOrEditDrugDialog(DrugListActivity activity, Drug drug, boolean isDangerous)
+    private AddOrEditDrugDialog(PatientDetailActivity activity, Drug drug, boolean isDangerous)
     {
         super(activity);
         mActivity = activity;

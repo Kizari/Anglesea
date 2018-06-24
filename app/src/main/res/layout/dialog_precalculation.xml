@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/DialogHeader"
+        android:layout_marginBottom="0dp">
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textLight"
+            android:fontFamily="@font/lato"
+            android:textSize="18sp"
+            android:text="Enter Administration Details"
+            android:padding="15dp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/buttonClose"
+            style="@style/ButtonMini"
+            android:background="@drawable/icon_close"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/textValue"
+            style="@style/FormLabel"
+            android:text="STANDING ORDER"
+            android:layout_marginTop="15dp"/>
+
+        <EditText
+            android:id="@+id/editValue"
+            style="@style/AngleseaEditText"
+            android:hint="mg/kg" />
+
+        <TextView
+            style="@style/FormLabel"
+            android:text="PATIENT WEIGHT" />
+
+        <EditText
+            android:id="@+id/editWeight"
+            style="@style/AngleseaEditText"
+            android:hint="kg" />
+
+        <Button
+            android:id="@+id/buttonSubmit"
+            style="@style/ButtonSmall"
+            android:background="@drawable/bg_button_accent"
+            android:textColor="@color/textLight"
+            android:text="Calculate"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

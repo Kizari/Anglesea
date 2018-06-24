@@ -18,8 +18,9 @@
     </item>-->
     <item>
         <shape>
-            <gradient android:startColor="#fff" android:endColor="#eee" android:angle="270" />
-            <stroke android:color="@color/colorPrimary" android:width="2dp" />
+            <!--<gradient android:startColor="#fff" android:endColor="#eee" android:angle="270" />-->
+            <stroke android:color="@color/colorPrimaryLight" android:width="2dp" />
+            <corners android:radius="500dp" />
         </shape>
     </item>
 </layer-list>

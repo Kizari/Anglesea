@@ -22,6 +22,9 @@ public interface DrugDao
     @Query("SELECT * FROM drug")
     List<Drug> getAll();
 
+    @Query("SELECT * FROM drug WHERE type = :type OR type = 3")
+    List<Drug> getAllByType(short type);
+
     @Query("SELECT * FROM drug WHERE isDangerous = 0 AND type = :type OR type = 3")
     List<Drug> getAllSafe(short type);
 

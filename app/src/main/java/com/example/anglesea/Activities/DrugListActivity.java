@@ -1,4 +1,4 @@
-package com.example.anglesea.Activities;
+/*package com.example.anglesea.Activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Button;
@@ -27,6 +28,8 @@ import com.example.anglesea.Entities.DrugType;
 import com.example.anglesea.Entities.Helper;
 import com.example.anglesea.R;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import static java.lang.String.valueOf;
@@ -71,7 +74,7 @@ public class DrugListActivity extends BaseActivity {
         actionBar.setTitle(s);
 
         safeList = findViewById(R.id.drugList);
-        dangerousList = findViewById(R.id.dangerousDrugList);
+        //dangerousList = findViewById(R.id.dangerousDrugList);
 
         //drugListButton = (FloatingActionButton) findViewById(R.id.drugListButton);
 
@@ -83,15 +86,36 @@ public class DrugListActivity extends BaseActivity {
         Log.d(TAG,"populateListView: Display list of drugs");
 
         //Retrieve list from database and populate list view
-        mSafeDrugs = mDatabase.drug().getAllSafe(drugType);
+        mSafeDrugs = mDatabase.drug().getAllByType(drugType);
         mDangerousDrugs = mDatabase.drug().getAllDangerous(drugType);
+
+        Collections.sort(mSafeDrugs, new Comparator<Drug>()
+        {
+            @Override
+            public int compare(Drug drug, Drug t1)
+            {
+                if(drug.isDangerous() == t1.isDangerous())
+                {
+                    return drug.getName().compareTo(t1.getName());
+                }
+                else
+                {
+                    if(drug.isDangerous() && !t1.isDangerous())
+                        return -1;
+                    else if(!drug.isDangerous() && t1.isDangerous())
+                        return 1;
+                }
+
+                return 0;
+            }
+        });
 
         //Create the list adapter and set
         mSafeAdapter = new DrugListAdapter(this, mSafeDrugs);
         mDangerousAdapter = new DrugListAdapter(this, mDangerousDrugs);
 
         safeList.setAdapter(mSafeAdapter);
-        dangerousList.setAdapter(mDangerousAdapter);
+        //dangerousList.setAdapter(mDangerousAdapter);
     }//End of Populate View
 
     public void addSafeDrug(View v)
@@ -156,15 +180,19 @@ public class DrugListActivity extends BaseActivity {
             TextView name = convertView.findViewById(R.id.textName);
             TextView strength = convertView.findViewById(R.id.textStrength);
             LinearLayout layout = convertView.findViewById(R.id.layout);
-            Button edit = convertView.findViewById(R.id.editButton);
+            //Button edit = convertView.findViewById(R.id.editButton);
+            ImageView imageDangerous = convertView.findViewById(R.id.imageDangerous);
 
             final Drug drug = getItem(position);
+
+            if(!drug.isDangerous())
+                imageDangerous.setVisibility(View.GONE);
 
             name.setText(drug.getName());
             String strengthString = Helper.format(drug.getMg()) + " mg / " + Helper.format(drug.getMl()) + "ml";
             strength.setText(strengthString);
 
-            edit.setOnClickListener(new View.OnClickListener()
+            /*edit.setOnClickListener(new View.OnClickListener()
             {
                 @Override
                 public void onClick(View v)
@@ -178,7 +206,7 @@ public class DrugListActivity extends BaseActivity {
                 @Override
                 public void onClick(View view)
                 {
-                    PrecalculationDialog.Create(mContext);
+                    PrecalculationDialog.Create(mContext, drug.getId());
                 }
             });
 
@@ -186,3 +214,4 @@ public class DrugListActivity extends BaseActivity {
         }
     }
 }
+*/

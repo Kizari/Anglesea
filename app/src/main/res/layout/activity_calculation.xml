@@ -8,148 +8,216 @@
     tools:context=".Activities.CalculationActivity"
     android:orientation="vertical">
 
-    <TextView
-        style="@style/FormLabel"
-        android:text="STANDING ORDER"
-        android:layout_marginTop="20dp"/>
-
-    <EditText
-        style="@style/AngleseaEditText"
-        android:hint="mg/kg" />
-
-    <TextView
-        style="@style/FormLabel"
-        android:text="PATIENT WEIGHT" />
-
-    <EditText
-        style="@style/AngleseaEditText"
-        android:hint="kg" />
-
-    <LinearLayout style="@style/Tabular">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="Dosage"
-            android:gravity="right"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="="
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:text="5mg/kg x 90kg" />
-    </LinearLayout>
-
-    <LinearLayout style="@style/Tabular">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="="
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:text="450mg" />
-    </LinearLayout>
-
-    <LinearLayout style="@style/Tabular" android:gravity="center_vertical">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="Total Medication"
-            android:gravity="right"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="="
-            android:gravity="center_horizontal"/>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="2">
-            <TextView
+    <android.support.v7.widget.CardView style="@style/BasicCard">
+        <LinearLayout style="@style/CardInner" android:orientation="horizontal" android:gravity="center_vertical">
+            <ImageView
+                android:id="@+id/imageDangerous"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="450mg" />
-            <View
-                android:layout_width="45dp"
-                android:layout_height="1dp"
-                android:background="#666666" />
-            <TextView
-                android:layout_width="wrap_content"
+                android:background="@drawable/icon_warning"
+                android:layout_marginRight="10dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="50mg"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textName"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:text="Paracetamol Syrup"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textStrength"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginRight="20dp"
+                        android:gravity="right"
+                        android:minHeight="0dp"
+                        android:text="250 mg / 50 ml"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textAdministered"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="20dp"
+                    android:gravity="center_vertical"
+                    android:text="Administered 24 Jun 18 8:00am"
+                    android:textSize="10sp"
+                    android:layout_marginTop="3dp"/>
+
+            </LinearLayout>
         </LinearLayout>
+    </android.support.v7.widget.CardView>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:gravity="center_vertical"
-            android:text="x 100ml"/>
+    <android.support.v7.widget.CardView style="@style/BasicCard" android:layout_weight="1">
+        <LinearLayout style="@style/CardInner" android:gravity="center_vertical" android:paddingLeft="0dp">
+            <LinearLayout style="@style/Tabular" android:layout_marginTop="5dp" android:layout_marginBottom="0dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Dosage"
+                    android:gravity="right"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="="
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:id="@+id/textDosage1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="5mg/kg x 90kg" />
+            </LinearLayout>
 
-    </LinearLayout>
+            <LinearLayout style="@style/Tabular">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="="
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:id="@+id/textDosage2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="450mg" />
+            </LinearLayout>
 
-    <LinearLayout style="@style/Tabular">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="="
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:text="90mg x 100ml" />
-    </LinearLayout>
+            <LinearLayout style="@style/Tabular" android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="Total"
+                    android:layout_margin="0dp"
+                    android:padding="0dp"
+                    android:gravity="right"/>
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="="
+                    android:gravity="center_horizontal"/>
 
-    <LinearLayout style="@style/Tabular">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:text="" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:text="="
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="6"
-            android:text="900ml" />
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:layout_weight="3">
+                    <TextView
+                        android:id="@+id/textTopFraction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="450mg" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#666666" />
+                    <TextView
+                        android:id="@+id/textBottomFraction"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50mg"/>
+                </LinearLayout>
 
-    <TextView style="@style/BasicHeading" android:text="Administer 900ml of\nParacetamol Syrup (250mg / 5ml)" />
+                <TextView
+                    android:id="@+id/textTotal1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3"
+                    android:gravity="center_vertical"
+                    android:text="x 100ml"/>
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/Tabular">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="="
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:id="@+id/textTotal2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="90mg x 100ml" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/Tabular">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:text="" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="="
+                    android:gravity="center_horizontal"/>
+                <TextView
+                    android:id="@+id/textTotal3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:text="900ml" />
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView style="@style/BasicCard">
+        <LinearLayout style="@style/CardInner" android:orientation="horizontal" android:padding="10dp">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Total medication to administer:"/>
+            <TextView
+                android:id="@+id/textFinal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="900ml" />
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
 
     <Button style="@style/ButtonSmall"
         android:text="Confirm Calculation" />
 
-    <com.github.gcacace.signaturepad.views.SignaturePad xmlns:android="http://schemas.android.com/apk/res/android"
+    <!--<com.github.gcacace.signaturepad.views.SignaturePad xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/signature"
         android:layout_width="match_parent"
@@ -159,6 +227,6 @@
         app:clearOnDoubleClick="true"
         app:penColor="@color/colorPrimaryDark"
         app:penMaxWidth="3dp"
-        app:penMinWidth="1dp" />
+        app:penMinWidth="1dp" />-->
 
 </LinearLayout>

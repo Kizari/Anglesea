@@ -8,7 +8,7 @@
     android:background="@color/colorSecondary"
     android:orientation="vertical">
 
-    <TextView
+    <!--<TextView
         style="@style/HeadingBar"
         android:background="@drawable/bg_frame_dark"
         android:textColor="@color/textLight"
@@ -22,21 +22,47 @@
         android:textStyle="bold"
         android:textSize="16sp"
         android:gravity="center_horizontal"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp"/>-->
 
-    <LinearLayout
-        android:id="@+id/layoutDay"
-        android:layout_width="wrap_content"
+
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textDay"
-        android:layout_above="@+id/textNight"
-        android:orientation="vertical"
-        android:padding="10dp"
+        card_view:cardBackgroundColor="@color/colorCard"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="25">
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layoutDay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/textDay"
+            android:layout_above="@+id/textNight"
+            android:orientation="vertical"
+            android:padding="10dp">
 
-    <TextView
+            <TextView
+                style="@style/BasicHeading"
+                android:text="Day Stay"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+    <!--<TextView
         style="@style/HeadingBar"
         android:background="@drawable/bg_frame_dark"
         android:textColor="@color/textLight"
@@ -49,18 +75,34 @@
         android:layout_weight="1"
         android:textStyle="bold"
         android:textSize="16sp"
-        android:gravity="center_horizontal" />
+        android:gravity="center_horizontal" />-->
 
-    <LinearLayout
-        android:id="@+id/layoutNight"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view2"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textNight"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:padding="10dp"
+        card_view:cardBackgroundColor="@color/colorCard"
+        android:layout_margin="10dp"
         android:layout_weight="40">
 
-    </LinearLayout>
+        <LinearLayout
+            android:id="@+id/layoutNight"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp">
+
+            <TextView
+                style="@style/BasicHeading"
+                android:text="Overnight Stay"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="5dp"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>
