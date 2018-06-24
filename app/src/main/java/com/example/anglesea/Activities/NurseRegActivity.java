@@ -53,8 +53,6 @@ public class NurseRegActivity extends BaseActivity {
 
     private Boolean validate() {
 
-
-
         String RN = RNTxt.getText().toString().trim();
         String FullName = FNTxt.getText().toString();
         String Password = PWTxt.getText().toString();
