@@ -10,4 +10,6 @@
     <color name="dangerous">#ff0000</color>
     <color name="textLight">#efefef</color>
     <color name="colorCard">#ffffff</color>
+    <color name="colorShadow">#dddddf</color>
+    <color name="mainText">#666666</color>
 </resources>

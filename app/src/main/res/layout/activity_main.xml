@@ -1,59 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity"
-    android:background="@color/colorSecondary"
-    android:orientation="vertical">
+    android:background="@color/colorSecondary">
 
-    <View
-        android:id="@+id/topBar"
+
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="@color/colorPrimaryDark" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <android.support.v7.widget.CardView style="@style/BasicCard">
+            <LinearLayout style="@style/CardInner">
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    app:srcCompat="@drawable/logo_anglesea"
+                    android:layout_above="@+id/loginFrame"
+                    android:layout_alignLeft="@+id/loginFrame"
+                    android:layout_alignRight="@+id/loginFrame"
+                    android:scaleType="fitCenter" />
+                <TextView
+                    style="@style/FormLabel"
+                    android:text="RN NUMBER"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+                <EditText
+                    style="@style/AngleseaEditText"
+                    android:id="@+id/txt_RNnumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
 
-            <Button
-                android:onClick="startRoomListActivity"
-                android:text="Room List Activity"
-                style="@style/GenericButton" />
+                <TextView
+                    style="@style/FormLabel"
+                    android:text="PASSWORD"/>
 
-            <Button
-                style="@style/GenericButton"
-                android:onClick="startAddDrug"
-                android:text="Add Drug Activity" />
+                <EditText
+                    style="@style/AngleseaEditText"
+                    android:id="@+id/txt_Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName" />
 
-            <Button
-                style="@style/GenericButton"
-                android:onClick="startDrugListScreen"
-                android:text="Drug List Activity" />
+                <Button
+                    android:id="@+id/btn_Login"
+                    style="@style/ButtonSmall"
+                    android:background="@drawable/bg_button_dark"
+                    android:textColor="@color/textLight"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="Login" />
 
-            <Button
-                style="@style/GenericButton"
-                android:onClick="startNurseLogin"
-                android:text="Nurse Login Activity" />
+                <Button
+                    style="@style/ButtonSmall"
+                    android:background="@drawable/bg_button_light"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:layout_marginTop="0dp"
+                    android:text="Register"
+                    android:onClick="startRegistration"/>
 
-            <Button
-                style="@style/GenericButton"
-                android:onClick="startNurseReg"
-                android:text="Nurse Reg Activity" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
 
-            <Button
-                style="@style/GenericButton"
-                android:onClick="startPatientSummary"
-                android:text="Patient Summary Activity" />
-        </LinearLayout>
+        <!--<LinearLayout
+            style="@style/Frame"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:id="@+id/loginFrame"
+            android:layout_marginBottom="50dp">-->
 
-    </ScrollView>
 
-</LinearLayout>
+
+
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+</RelativeLayout>

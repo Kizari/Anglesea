@@ -7,14 +7,18 @@ import android.view.View;
 import android.view.Window;
 import android.widget.LinearLayout;
 
+import com.example.anglesea.DataAccess.DB;
+
 public class BaseDialog extends Dialog
 {
     protected Context mContext;
+    protected DB mDatabase;
 
     protected BaseDialog(Context context)
     {
         super(context);
         mContext = context;
+        mDatabase = DB.get(context);
     }
 
     protected void showFull(BaseDialog dialog)

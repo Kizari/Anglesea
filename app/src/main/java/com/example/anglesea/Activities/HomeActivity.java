@@ -9,22 +9,16 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.anglesea.DataAccess.DB;
-import com.example.anglesea.DataAccess.Patient.Patient;
-import com.example.anglesea.DataAccess.Room.Room;
 import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.R;
 
-import java.util.GregorianCalendar;
-import java.util.List;
-
-public class RoomListActivity extends BaseActivity
+public class HomeActivity extends BaseActivity
 {
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room_list);
+        setContentView(R.layout.activity_home);
 
         createRooms((LinearLayout)findViewById(R.id.layoutDay), 12, 6, "D");
         createRooms((LinearLayout)findViewById(R.id.layoutNight), 17, 6, "Rm");
@@ -57,8 +51,8 @@ public class RoomListActivity extends BaseActivity
             button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(context, PatientDetailActivity.class);
-                    intent.putExtra("room", roomNo);
+                    Intent intent = new Intent(context, RoomActivity.class);
+                    intent.putExtra("mRoom", roomNo);
                     context.startActivity(intent);
                 }
             });
@@ -107,8 +101,8 @@ public class RoomListActivity extends BaseActivity
                 button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent intent = new Intent(context, PatientDetailActivity.class);
-                        intent.putExtra("room", roomNo);
+                        Intent intent = new Intent(context, RoomActivity.class);
+                        intent.putExtra("mRoom", roomNo);
                         context.startActivity(intent);
                     }
                 });

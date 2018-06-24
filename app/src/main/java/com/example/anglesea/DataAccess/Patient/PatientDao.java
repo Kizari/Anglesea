@@ -4,6 +4,9 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
+
+import com.example.anglesea.DataAccess.Drug.Drug;
 
 import java.util.List;
 
@@ -23,6 +26,9 @@ public interface PatientDao
 
     @Query("SELECT * FROM patient WHERE NHI = :NHI")
     Patient getByNHI(String NHI);
+
+    @Update
+    void update(Patient... patients);
 
     @Delete
     void delete(Patient patient);

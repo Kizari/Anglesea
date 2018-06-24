@@ -16,7 +16,7 @@
             android:textColor="@color/textLight"
             android:fontFamily="@font/lato"
             android:textSize="18sp"
-            android:text="New Patient"
+            android:text="Add Patient"
             android:padding="15dp"
             android:layout_weight="1"/>
         <Button
@@ -34,34 +34,69 @@
         <TextView style="@style/FormLabel"
             android:text="NHI NUMBER"/>
 
-        <EditText style="@style/AngleseaEditText" />
-
-        <TextView style="@style/FormLabel"
-            android:text="FULL NAME"/>
-
-        <EditText style="@style/AngleseaEditText" />
-
-
-
-        <TextView style="@style/FormLabel"
-            android:text="DATE OF BIRTH"/>
+        <EditText style="@style/AngleseaEditText" android:id="@+id/editNHI" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:id="@+id/layoutConditional">
 
-            <EditText style="@style/AngleseaEditText" />
-            <EditText style="@style/AngleseaEditText" />
-            <EditText style="@style/AngleseaEditText" />
+            <TextView style="@style/FormLabel" android:text="FULL NAME"/>
+            <EditText android:id="@+id/editName" style="@style/AngleseaEditText" />
+
+            <TextView style="@style/FormLabel"
+                android:text="DATE OF BIRTH"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText style="@style/AngleseaEditText"
+                    android:id="@+id/editDay"
+                    android:hint="DD"
+                    android:layout_weight="1"/>
+                <EditText style="@style/AngleseaEditText"
+                    android:id="@+id/editMonth"
+                    android:hint="MM"
+                    android:layout_weight="1"/>
+                <EditText style="@style/AngleseaEditText"
+                    android:id="@+id/editYear"
+                    android:hint="YYYY"
+                    android:layout_weight="1"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 
-
         <Button style="@style/ButtonSmall"
+            android:id="@+id/buttonCheck"
             android:background="@drawable/bg_button_accent"
             android:textColor="@color/textLight"
-            android:text="Save" />
+            android:text="Add" />
+
+        <LinearLayout
+            android:id="@+id/layoutButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button style="@style/ButtonSmall"
+                android:id="@+id/buttonSave"
+                android:background="@drawable/bg_button_accent"
+                android:textColor="@color/textLight"
+                android:text="Save"
+                android:layout_weight="1"/>
+
+            <Button style="@style/ButtonSmall"
+                android:id="@+id/buttonDelete"
+                android:background="@drawable/bg_button_accent"
+                android:textColor="@color/textLight"
+                android:text="Delete"
+                android:layout_weight="1"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

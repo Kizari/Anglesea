@@ -4,25 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.PatientDetailActivity"
+    tools:context=".Activities.RoomActivity"
     android:background="@color/colorSecondary"
     android:orientation="vertical">
 
     <android.support.v7.widget.CardView style="@style/BasicCard" android:id="@+id/cardNew">
         <LinearLayout style="@style/CardInner" android:layout_margin="15dp" android:orientation="horizontal" android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Room Vacant"
-                android:textSize="24sp" />
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center_vertical" android:layout_weight="1">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Room Vacant"
+                    android:textSize="24sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add a patient to start administration"/>
+            </LinearLayout>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:background="@drawable/small_button_add"
-                android:adjustViewBounds="true"
                 android:minWidth="0dp"
                 android:minHeight="0dp"
                 android:onClick="onNewPatient"/>
@@ -65,6 +68,7 @@
                 android:layout_weight="1"/>
 
             <Button
+                android:onClick="onEditPatient"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Edit"
@@ -110,29 +114,38 @@
                 android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/buttonOral"
+                    android:onClick="onOralClicked"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:textColor="@color/textLight"
+                    android:background="@android:color/white"
+                    android:textColor="@color/colorPrimary"
                     android:fontFamily="@font/lato"
                     android:textAllCaps="false"
-                    android:text="Oral"/>
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="match_parent"
-                    android:background="@color/colorPrimaryDark" />
+                    android:minHeight="0dp"
+                    android:text="Oral"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"/>
 
                 <Button
+                    android:id="@+id/buttonIntravenous"
+                    android:onClick="onIntravenousClicked"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:background="@color/colorPrimary"
-                    android:textColor="@color/textLight"
+                    android:background="@color/colorShadow"
+                    android:textColor="@color/mainText"
                     android:fontFamily="@font/lato"
                     android:textAllCaps="false"
-                    android:text="Intravenous"/>
+                    android:minHeight="0dp"
+                    android:text="Intravenous"
+                    android:gravity="left"
+                    android:paddingLeft="15dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"/>
 
             </LinearLayout>
 
@@ -144,7 +157,7 @@
         </LinearLayout>
     </android.support.v7.widget.CardView>
 
-    <!--<LinearLayout style="@style/Frame" android:id="@+id/patient">
+    <!--<LinearLayout style="@style/Frame" android:id="@+id/mPatient">
         <LinearLayout style="@style/FrameHeader" android:id="@+id/heading">
             <TextView
                 style="@style/Heading"
@@ -216,13 +229,13 @@
 
     <LinearLayout
         style="@style/Frame"
-        android:layout_below="@+id/patient"
+        android:layout_below="@+id/mPatient"
         android:layout_above="@+id/buttons">
 
         <LinearLayout
             style="@style/FrameHeader"
             android:id="@+id/allergies"
-            android:layout_below="@+id/patient">
+            android:layout_below="@+id/mPatient">
 
             <TextView
                 style="@style/Heading"

@@ -10,10 +10,9 @@ import android.widget.Toast;
 import com.example.anglesea.DataAccess.Nurse.Nurse;
 import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.Entities.Helper;
-import com.example.anglesea.NurseLoginActivity;
 import com.example.anglesea.R;
 
-public class NurseRegActivity extends BaseActivity {
+public class RegistrationActivity extends BaseActivity {
 
     private EditText RNTxt;
     private EditText FNTxt;
@@ -25,7 +24,7 @@ public class NurseRegActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nurse_reg);
+        setContentView(R.layout.activity_registration);
 
         //CancelBtn = (Button) findViewById(R.id.CancelBtn);
         RegBtn = (Button) findViewById(R.id.RegBtn);
@@ -83,7 +82,7 @@ public class NurseRegActivity extends BaseActivity {
     }
 
     private void Cancel(){
-        Intent canIntent = new Intent(NurseRegActivity.this, NurseLoginActivity.class);
+        Intent canIntent = new Intent(RegistrationActivity.this, MainActivity.class);
         startActivity(canIntent);
     }
 
