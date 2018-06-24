@@ -2,9 +2,11 @@ package com.example.anglesea.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.example.anglesea.DataAccess.Drug.Drug;
+import com.example.anglesea.Dialogs.SignatureDialog;
 import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.Entities.BaseDialog;
 import com.example.anglesea.R;
@@ -68,5 +70,10 @@ public class CalculationActivity extends BaseActivity
         textTotal3.setText(format.format(total) + "ml");
 
         textFinal.setText(Math.round(total) + "ml");
+    }
+
+    public void onVerify(View v)
+    {
+        SignatureDialog.Create(this);
     }
 }

@@ -9,73 +9,64 @@
     android:orientation="vertical"
     android:padding="5dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1">
+    <android.support.v7.widget.CardView style="@style/BasicCard" android:layout_weight="1" android:layout_marginBottom="10dp">
+        <LinearLayout style="@style/CardInner">
 
-        <TextView
-            style="@style/HeadingBar"
-            android:background="@drawable/bg_frame_dark"
-            android:textColor="@color/textLight"
-            android:id="@+id/textDay"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nurse Registration Form"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="15dp"/>
+            <TextView
+                style="@style/BasicHeading"
+                android:text="Enter Your Details"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="0dp"/>
 
-        <TextView style="@style/FormLabel" android:text="RN NUMBER" android:layout_marginTop="20dp"/>
-        <EditText
-            style="@style/AngleseaEditText"
-            android:id="@+id/RNTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="number" />
+            <TextView style="@style/FormLabel" android:text="RN NUMBER" android:layout_marginTop="20dp"/>
+            <EditText
+                style="@style/AngleseaEditText"
+                android:id="@+id/RNTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="number" />
 
-        <TextView style="@style/FormLabel" android:text="FULL NAME"/>
-        <EditText
-            style="@style/AngleseaEditText"
-            android:id="@+id/FNTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"/>
+            <TextView style="@style/FormLabel" android:text="FULL NAME"/>
+            <EditText
+                style="@style/AngleseaEditText"
+                android:id="@+id/FNTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"/>
 
-        <TextView style="@style/FormLabel" android:text="PASSWORD"/>
-        <EditText
-            style="@style/AngleseaEditText"
-            android:id="@+id/PWTxt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword" />
+            <TextView style="@style/FormLabel" android:text="PASSWORD"/>
+            <EditText
+                style="@style/AngleseaEditText"
+                android:id="@+id/PWTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
 
-        <TextView style="@style/FormLabel" android:text="CONFIRM PASSWORD"/>
-        <EditText
-            style="@style/AngleseaEditText"
-            android:id="@+id/PW2Txt"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPassword" />
-    </LinearLayout>
+            <TextView style="@style/FormLabel" android:text="CONFIRM PASSWORD"/>
+            <EditText
+                style="@style/AngleseaEditText"
+                android:id="@+id/PW2Txt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/RegBtn"
-        style="@style/ButtonSmall"
-        android:background="@drawable/bg_button_dark"
-        android:textColor="@color/textLight"
-        android:text="Register"
-        android:layout_marginLeft="12dp"
-        android:layout_marginRight="12dp"
-        android:layout_marginBottom="20dp"/>
+            <Button
+                android:id="@+id/RegBtn"
+                style="@style/ButtonSmall"
+                android:background="@drawable/bg_button_dark"
+                android:textColor="@color/textLight"
+                android:text="Register" />
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
 
     <!--<LinearLayout
         android:id="@+id/buttons"

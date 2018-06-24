@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.TypefaceSpan;
@@ -23,6 +24,7 @@ import com.example.anglesea.DataAccess.Drug.Drug;
 import com.example.anglesea.DataAccess.Patient.Patient;
 import com.example.anglesea.DataAccess.Room.Room;
 import com.example.anglesea.Dialogs.AddOrEditDrugDialog;
+import com.example.anglesea.Dialogs.AddOrEditPatientDialog;
 import com.example.anglesea.Dialogs.DrugTypeDialog;
 import com.example.anglesea.Dialogs.PrecalculationDialog;
 import com.example.anglesea.Entities.BaseActivity;
@@ -61,10 +63,19 @@ public class PatientDetailActivity extends BaseActivity
         TextView textNHI = findViewById(R.id.textNHI);
         TextView textAge = findViewById(R.id.textAge);
 
-        textFullName.setText(patient.getFullName());
-        textNHI.setText(patient.getNHI());
-        textAge.setText(String.valueOf(mHelper.calculateAge(patient.getDOB())) + " Years");
-
+        if(patient != null)
+        {
+            CardView card = findViewById(R.id.cardNew);
+            card.setVisibility(View.GONE);
+            textFullName.setText(patient.getFullName());
+            textNHI.setText(patient.getNHI());
+            textAge.setText(String.valueOf(mHelper.calculateAge(patient.getDOB())) + " Years");
+        }
+        else
+        {
+            CardView card = findViewById(R.id.cardExisting);
+            card.setVisibility(View.GONE);
+        }
 
         drugType = getIntent().getExtras().getShort("drugType");
         drugType = DrugType.ORAL;
@@ -173,6 +184,11 @@ public class PatientDetailActivity extends BaseActivity
             mSafeAdapter.notifyDataSetChanged();
     }
 
+    public void onNewPatient(View v)
+    {
+        AddOrEditPatientDialog.Create(this);
+    }
+
     private class DrugListAdapter extends ArrayAdapter<Drug>
     {
         public DrugListAdapter(Context context, List<Drug> items)
@@ -200,7 +216,7 @@ public class PatientDetailActivity extends BaseActivity
                 imageDangerous.setVisibility(View.VISIBLE);
 
             name.setText(drug.getName());
-            String strengthString = Helper.format(drug.getMg()) + " mg / " + Helper.format(drug.getMl()) + "ml";
+            String strengthString = Helper.format(drug.getMg()) + "mg / " + Helper.format(drug.getMl()) + "ml";
             strength.setText(strengthString);
 
             /*edit.setOnClickListener(new View.OnClickListener()
