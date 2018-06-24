@@ -57,24 +57,23 @@ public class NurseRegActivity extends BaseActivity {
         String FullName = FNTxt.getText().toString();
         String Password = PWTxt.getText().toString();
 
-
         if(RN.isEmpty() || FullName.isEmpty()  || Password.isEmpty() )
         {
             Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show();
             return false;
         }
-
         Nurse exists = mDatabase.nurse().getByRN(RN);
-
         if(exists != null){
-            Helper.toast(this, "RN already registered. Try logging in.");
+            Helper.toast(this, "RN already registered.Try logging in");
             return false;
         }
 
         //Create new nurse object
         Nurse nurse = new Nurse(RN, FullName, Password);
+
         // Insert the nurse into the database
         mDatabase.nurse().insert(nurse);
+
         Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
 
         return true;
