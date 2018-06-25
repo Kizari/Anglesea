@@ -13,6 +13,10 @@
         <item name="android:checkboxStyle">@style/MainCheckBox</item>
     </style>
 
+    <style name="AppTheme.NoTitleBar" parent="AppTheme">
+        <item name="android:windowNoTitle" />
+    </style>
+
     <!--<style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="android:textColorPrimary">@color/textLight</item>
         <item name="android:background">@color/colorPrimary</item>

@@ -20,8 +20,11 @@ public interface AdministrationDao
     @Query("SELECT * FROM administration")
     List<Administration> getAll();
 
-    @Query("SELECT * FROM administration WHERE NHI = :NHI")
-    List<Administration> getByNHI(String NHI);
+    @Query("SELECT * FROM administration WHERE chartId = :chartId")
+    List<Administration> getByChart(long chartId);
+
+    @Query("SELECT MAX(timestamp) as max_date FROM administration WHERE chartId = :chartId AND drugId = :drugId")
+    long getMaxDateForDrug(long chartId, long drugId);
 
     @Delete
     void delete(Administration drug);

@@ -7,6 +7,8 @@ import android.content.Context;
 
 import com.example.anglesea.DataAccess.Administration.Administration;
 import com.example.anglesea.DataAccess.Administration.AdministrationDao;
+import com.example.anglesea.DataAccess.Chart.Chart;
+import com.example.anglesea.DataAccess.Chart.ChartDao;
 import com.example.anglesea.DataAccess.Drug.Drug;
 import com.example.anglesea.DataAccess.Drug.DrugDao;
 import com.example.anglesea.DataAccess.Nurse.Nurse;
@@ -24,8 +26,9 @@ import java.util.GregorianCalendar;
         Drug.class,
         com.example.anglesea.DataAccess.Room.Room.class,
         Nurse.class,
-        Administration.class
-}, version = 18)
+        Administration.class,
+        Chart.class
+}, version = 20)
 public abstract class DB extends RoomDatabase
 {
     private static DB instance;
@@ -35,6 +38,7 @@ public abstract class DB extends RoomDatabase
     public abstract RoomDao room();
     public abstract NurseDao nurse();
     public abstract AdministrationDao administration();
+    public abstract ChartDao chart();
 
     public static DB get(Context context)
     {
@@ -54,11 +58,11 @@ public abstract class DB extends RoomDatabase
     private static void createTestData(DB instance)
     {
         // Populate Nurse Table
-        if(instance.nurse().getAll().size() < 1)
+        /*if(instance.nurse().getAll().size() < 1)
         {
             Nurse nurse = new Nurse("ABC1234", "Joy Miller", "password");
             instance.nurse().insert(nurse);
-        }
+        }*/
 
         // Populate Drug Table
         if(instance.drug().getAll().size() < 1)
@@ -133,7 +137,7 @@ public abstract class DB extends RoomDatabase
         }
 
         // Populate Patient Table
-        if(instance.patient().getAll().size() < 1)
+        /*if(instance.patient().getAll().size() < 1)
         {
             Patient patient = new Patient();
             patient.setFullName("John Smith");
@@ -148,29 +152,7 @@ public abstract class DB extends RoomDatabase
             patient.setDOB(new GregorianCalendar(1976, 5, 12).getTimeInMillis());
             patient.setRoomId(17);
             instance.patient().insert(patient);
-        }
-
-        // Populate Administration Table
-        if(instance.patient().getAll().size() < 1)
-        {
-            Administration administration = new Administration();
-            administration.setNHI("IWE1238");
-            administration.setDrugId(2);
-            administration.setQuantity(24);
-            instance.administration().insert(administration);
-
-            administration = new Administration();
-            administration.setNHI("IWE1238");
-            administration.setDrugId(2);
-            administration.setQuantity(12);
-            instance.administration().insert(administration);
-
-            administration = new Administration();
-            administration.setNHI("IWE1238");
-            administration.setDrugId(1);
-            administration.setQuantity(50);
-            instance.administration().insert(administration);
-        }
+        }*/
     }
 
     public static void destroyInstance()

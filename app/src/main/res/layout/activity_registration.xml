@@ -54,6 +54,8 @@
                 android:ems="10"
                 android:inputType="textPassword" />
 
+            <View android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" />
+
             <Button
                 android:id="@+id/RegBtn"
                 style="@style/ButtonSmall"

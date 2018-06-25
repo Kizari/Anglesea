@@ -23,6 +23,9 @@ public class Patient
     @ColumnInfo(name = "roomId")
     private int roomId;
 
+    @ColumnInfo(name = "chartId")
+    private long chartId;
+
     public String getNHI() {
         return NHI;
     }
@@ -53,5 +56,13 @@ public class Patient
 
     public void setRoomId(int roomId) {
         this.roomId = roomId;
+    }
+
+    public long getChartId() {
+        return chartId;
+    }
+
+    public void setChartId(long chartId) {
+        this.chartId = chartId;
     }
 }

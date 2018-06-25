@@ -87,6 +87,7 @@
                 android:layout_marginRight="10dp"/>
 
             <Button
+                android:onClick="onDischarge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Discharge"

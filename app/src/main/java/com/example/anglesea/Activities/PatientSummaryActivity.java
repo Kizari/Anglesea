@@ -1,4 +1,4 @@
-package com.example.anglesea.Activities;
+/*package com.example.anglesea.Activities;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -68,7 +68,7 @@ public class PatientSummaryActivity extends BaseActivity
         roomTextView.setText(room.getRoomName());
 
         // Get all the administrations for this mNHI
-        List<Administration> administrations = mDatabase.administration().getByNHI("ABC1234");
+        //List<Administration> administrations = mDatabase.administration().getByNHI("ABC1234");
 
         // This will store the final results to be displayed
         List<Result> results = new ArrayList<Result>();
@@ -138,3 +138,4 @@ public class PatientSummaryActivity extends BaseActivity
         public double mQuantity;
     }
 }
+*/

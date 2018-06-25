@@ -26,11 +26,14 @@ import com.example.anglesea.DataAccess.Room.Room;
 import com.example.anglesea.Dialogs.AddOrEditDrugDialog;
 import com.example.anglesea.Dialogs.AddOrEditPatientDialog;
 import com.example.anglesea.Dialogs.PrecalculationDialog;
+import com.example.anglesea.Dialogs.SummaryDialog;
 import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.Entities.DrugType;
 import com.example.anglesea.Entities.Helper;
 import com.example.anglesea.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -143,13 +146,14 @@ public class RoomActivity extends BaseActivity
         if(drug.getType() == drugType)
         {
             mDrugs.add(drug);
+            sortDrugList();
             mAdapter.notifyDataSetChanged();
         }
     }
 
     public void updateDrug(Drug drug)
     {
-        if(drug.getType() != drugType)
+        if(drug.getType() != DrugType.BOTH && drug.getType() != drugType)
         {
             Drug temp = null;
             for(Drug d : mDrugs)
@@ -161,6 +165,8 @@ public class RoomActivity extends BaseActivity
             if(temp != null)
                 mDrugs.remove(temp);
         }
+
+        sortDrugList();
         mAdapter.notifyDataSetChanged();
     }
 
@@ -246,6 +252,14 @@ public class RoomActivity extends BaseActivity
         });
     }
 
+    public void onDischarge(View v)
+    {
+        SummaryDialog.Create(this, mPatient.getChartId());
+        mPatient.setRoomId(-1);
+        mDatabase.patient().update(mPatient);
+        hidePatientDetails();
+    }
+
     private class DrugListAdapter extends ArrayAdapter<Drug>
     {
         public DrugListAdapter(Context context, List<Drug> items)
@@ -261,6 +275,7 @@ public class RoomActivity extends BaseActivity
 
             TextView name = convertView.findViewById(R.id.textName);
             TextView strength = convertView.findViewById(R.id.textStrength);
+            TextView administered = convertView.findViewById(R.id.textAdministered);
             LinearLayout layout = convertView.findViewById(R.id.layout);
             //Button edit = convertView.findViewById(R.id.editButton);
             ImageView imageDangerous = convertView.findViewById(R.id.imageDangerous);
@@ -272,6 +287,25 @@ public class RoomActivity extends BaseActivity
             else
                 imageDangerous.setVisibility(View.VISIBLE);
 
+            if(mPatient != null)
+            {
+                long lastAdministered = mDatabase.administration().getMaxDateForDrug(mPatient.getChartId(), drug.getId());
+
+                if(lastAdministered > 0)
+                {
+                    DateFormat df = new SimpleDateFormat("d MMM 'at' h:mma");
+                    administered.setText("Last administered " + df.format(lastAdministered));
+                }
+                else
+                {
+                    administered.setText("No administrations this visit");
+                }
+            }
+            else
+            {
+                administered.setText("No administrations this visit");
+            }
+
             name.setText(drug.getName());
             String strengthString = Helper.format(drug.getMg()) + "mg / " + Helper.format(drug.getMl()) + "ml";
             strength.setText(strengthString);
@@ -282,9 +316,14 @@ public class RoomActivity extends BaseActivity
                 public void onClick(View view)
                 {
                     if(mIsEditMode)
-                        AddOrEditDrugDialog.Create((RoomActivity)mContext, drug, drug.isDangerous());
+                    {
+                        AddOrEditDrugDialog.Create((RoomActivity) mContext, drug, drug.isDangerous());
+                    }
                     else
-                        PrecalculationDialog.Create((RoomActivity)mContext, drug.getId());
+                    {
+                        if(mPatient != null)
+                            PrecalculationDialog.Create((RoomActivity) mContext, drug.getId());
+                    }
                 }
             });
 

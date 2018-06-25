@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/DialogHeader"
+        android:layout_marginBottom="0dp">
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textLight"
+            android:fontFamily="@font/lato"
+            android:textSize="18sp"
+            android:text="Patient Discharged"
+            android:padding="15dp"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/buttonView"
+            style="@style/ButtonSmall"
+            android:text="View"
+            android:background="@drawable/bg_button_accent"
+            android:textColor="@color/textLight"
+            android:layout_weight="1"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/buttonLater"
+            style="@style/ButtonSmall"
+            android:text="Later"
+            android:background="@drawable/bg_button_light_accent"
+            android:textColor="@color/colorAccent"
+            android:layout_weight="1"
+            android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

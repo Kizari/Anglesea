@@ -8,6 +8,7 @@ import android.widget.Button;
 import com.example.anglesea.Activities.CalculationActivity;
 import com.example.anglesea.Activities.HomeActivity;
 import com.example.anglesea.DataAccess.Administration.Administration;
+import com.example.anglesea.DataAccess.Patient.Patient;
 import com.example.anglesea.Entities.BaseDialog;
 import com.example.anglesea.Entities.Helper;
 import com.example.anglesea.R;
@@ -45,10 +46,12 @@ public class DangerousDialog extends BaseDialog implements View.OnClickListener
         Administration administration = new Administration();
         administration.setQuantity(mActivity.mFinal);
         administration.setDrugId(mActivity.mDrug.getId());
-        administration.setNHI(mActivity.mNHI);
+        Patient patient = mDatabase.patient().getByNHI(mActivity.mNHI);
+        administration.setChartId(patient.getChartId());
         administration.setRN(mActivity.mRN);
         administration.setSignature(mActivity.mSignature);
         administration.setTimestamp(System.currentTimeMillis());
+        administration.setRoomId(patient.getRoomId());
         mDatabase.administration().insert(administration);
 
         Helper.toast(mActivity, "Administration Complete");

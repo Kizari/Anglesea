@@ -102,7 +102,7 @@ public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
             Helper.toast(mActivity, "Please ensure all fields are filled");
             return;
         }
-        else if(!radioOral.isChecked() && !radioIV.isChecked())
+        else if(!radioOral.isChecked() && !radioIV.isChecked() && !radioBoth.isChecked())
         {
             Helper.toast(mActivity, "Please select either Oral, Intravenous, or Both");
             return;

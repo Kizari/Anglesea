@@ -1,14 +1,21 @@
 package com.example.anglesea.Entities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.TypefaceSpan;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import com.example.anglesea.Activities.AuditActivity;
+import com.example.anglesea.Activities.MainActivity;
 import com.example.anglesea.DataAccess.DB;
+import com.example.anglesea.R;
 
 public class BaseActivity extends AppCompatActivity
 {
@@ -41,6 +48,40 @@ public class BaseActivity extends AppCompatActivity
         mHelper = new Helper(this);
         mContext = this;
         mDatabase = DB.get(this);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        if(!getClass().getSimpleName().equals("MainActivity") && !getClass().getSimpleName().equals("RegistrationActivity") && !getClass().getSimpleName().equals("AuditActivity"))
+        {
+            MenuInflater inflater = getMenuInflater();
+            inflater.inflate(R.menu.main_menu, menu);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+        switch(item.getItemId())
+        {
+            case R.id.item_audit:
+                Intent intent = new Intent(this, AuditActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.item_logout:
+                Intent loginIntent = new Intent(this, MainActivity.class);
+                loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Removes other Activities from stack
+                startActivity(loginIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

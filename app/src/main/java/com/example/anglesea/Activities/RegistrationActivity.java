@@ -63,7 +63,7 @@ public class RegistrationActivity extends BaseActivity {
         }
         Nurse exists = mDatabase.nurse().getByRN(RN);
         if(exists != null){
-            Helper.toast(this, "RN already registered.Try logging in");
+            Helper.toast(this, "RN already registered. Please log in instead.");
             return false;
         }
 
@@ -74,6 +74,7 @@ public class RegistrationActivity extends BaseActivity {
         mDatabase.nurse().insert(nurse);
 
         Toast.makeText(this, "Registration Successful", Toast.LENGTH_SHORT).show();
+        finish();
 
         return true;
     }

@@ -10,11 +10,14 @@ public class Administration
     @PrimaryKey(autoGenerate = true)
     private long id;
 
-    @ColumnInfo(name = "NHI")
-    private String NHI;
+    @ColumnInfo(name = "chartId")
+    private long chartId;
 
     @ColumnInfo(name = "RN")
     private String RN;
+
+    @ColumnInfo(name = "roomId")
+    private int roomId;
 
     @ColumnInfo(name = "drugId")
     private long drugId;
@@ -34,14 +37,6 @@ public class Administration
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getNHI() {
-        return NHI;
-    }
-
-    public void setNHI(String NHI) {
-        this.NHI = NHI;
     }
 
     public long getDrugId() {
@@ -82,5 +77,21 @@ public class Administration
 
     public void setTimestamp(long timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public long getChartId() {
+        return chartId;
+    }
+
+    public void setChartId(long chartId) {
+        this.chartId = chartId;
+    }
+
+    public int getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
     }
 }

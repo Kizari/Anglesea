@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.anglesea.Activities.RoomActivity;
+import com.example.anglesea.DataAccess.Chart.Chart;
 import com.example.anglesea.DataAccess.Patient.Patient;
 import com.example.anglesea.Entities.BaseDialog;
 import com.example.anglesea.Entities.Helper;
@@ -113,6 +114,11 @@ public class AddOrEditPatientDialog extends BaseDialog implements View.OnClickLi
         }
         else
         {
+            Chart chart = new Chart();
+            chart.setNHI(patient.getNHI());
+            long chartId = mDatabase.chart().insert(chart);
+
+            patient.setChartId(chartId);
             patient.setRoomId(mActivity.mRoom.getId());
             mDatabase.patient().update(patient);
             mActivity.showPatientDetails(patient);
@@ -169,6 +175,12 @@ public class AddOrEditPatientDialog extends BaseDialog implements View.OnClickLi
         mPatient.setRoomId(mActivity.mRoom.getId());
         mPatient.setDOB(new GregorianCalendar(year, month, day).getTimeInMillis());
         mPatient.setFullName(editName.getText().toString());
+
+        Chart chart = new Chart();
+        chart.setNHI(mPatient.getNHI());
+        long chartId = mDatabase.chart().insert(chart);
+
+        mPatient.setChartId(chartId);
 
         if(isNew)
             mDatabase.patient().insert(mPatient);
