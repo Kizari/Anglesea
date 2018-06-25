@@ -59,15 +59,15 @@ public class PatientSummaryActivity extends BaseActivity
             }
         });
 
-        // Get mPatient
+        // Get mNHI
         Patient patient = mDatabase.patient().getByNHI("ABC1234");
         fullNameTextView.setText(patient.getFullName());
 
-        // Get mPatient mRoom
+        // Get mNHI mRoom
         Room room = mDatabase.room().getById(patient.getRoomId());
         roomTextView.setText(room.getRoomName());
 
-        // Get all the administrations for this mPatient
+        // Get all the administrations for this mNHI
         List<Administration> administrations = mDatabase.administration().getByNHI("ABC1234");
 
         // This will store the final results to be displayed

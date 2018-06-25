@@ -74,6 +74,7 @@ public class MainActivity extends BaseActivity {
         {
             // Password matched so go to next activity
             Intent intent  = new Intent(this, HomeActivity.class);
+            intent.putExtra("rn", nurse.getRN());
             startActivity(intent);
             finish();
         }

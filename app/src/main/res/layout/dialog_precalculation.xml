@@ -44,6 +44,7 @@
             android:hint="mg/kg" />
 
         <TextView
+            android:id="@+id/textWeight"
             style="@style/FormLabel"
             android:text="PATIENT WEIGHT" />
 

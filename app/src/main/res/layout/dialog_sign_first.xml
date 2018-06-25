@@ -48,6 +48,7 @@
             android:background="@drawable/bg_frame"/>
 
         <Button
+            android:id="@+id/buttonConfirm"
             style="@style/ButtonSmall"
             android:background="@drawable/bg_button_accent"
             android:textColor="@color/textLight"

@@ -1,6 +1,7 @@
 package com.example.anglesea.Activities;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.support.v7.app.ActionBar;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -38,10 +39,14 @@ public class RoomActivity extends BaseActivity
 {
     public Room mRoom;
     public Patient mPatient;
+    public String mRN;
+
+    public boolean mIsEditMode;
 
     CardView cardNew, cardExisting;
     TextView textFullName, textNHI, textAge;
-    Button buttonOral, buttonIntravenous;
+    Button buttonOral, buttonIntravenous, buttonEdit;
+    LinearLayout layoutEditBackground;
 
     private ListView drugList;
     private short drugType;
@@ -55,8 +60,10 @@ public class RoomActivity extends BaseActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room);
 
+        mRN = getIntent().getExtras().getString("rn");
         mRoom = mDatabase.room().getByName(getIntent().getStringExtra("mRoom"));
         mPatient = mDatabase.patient().getByRoom(mRoom.getId());
+        mIsEditMode = false;
 
         SpannableString s = new SpannableString(mRoom.getRoomName() + " Details");
         s.setSpan(new TypefaceSpan("Lato"), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -74,6 +81,8 @@ public class RoomActivity extends BaseActivity
 
         buttonOral = findViewById(R.id.buttonOral);
         buttonIntravenous = findViewById(R.id.buttonIntravenous);
+        buttonEdit = findViewById(R.id.buttonEditMode);
+        layoutEditBackground = findViewById(R.id.layoutEditBackground);
 
         if(mPatient != null)
         {
@@ -115,14 +124,9 @@ public class RoomActivity extends BaseActivity
         cardExisting.setVisibility(View.GONE);
     }
 
-    public void addSafeDrug(View v)
+    public void addDrug(View v)
     {
         AddOrEditDrugDialog.Create((RoomActivity)this, null, false);
-    }
-
-    public void addDangerousDrug(View v)
-    {
-        AddOrEditDrugDialog.Create((RoomActivity)this, null, true);
     }
 
     public void removeDrug(Drug drug)
@@ -145,6 +149,18 @@ public class RoomActivity extends BaseActivity
 
     public void updateDrug(Drug drug)
     {
+        if(drug.getType() != drugType)
+        {
+            Drug temp = null;
+            for(Drug d : mDrugs)
+            {
+                if(d.getId() == drug.getId())
+                    temp = d;
+            }
+
+            if(temp != null)
+                mDrugs.remove(temp);
+        }
         mAdapter.notifyDataSetChanged();
     }
 
@@ -156,6 +172,22 @@ public class RoomActivity extends BaseActivity
     public void onEditPatient(View v)
     {
         AddOrEditPatientDialog.Create(this, true);
+    }
+
+    public void onEditMode(View v)
+    {
+        mIsEditMode = !mIsEditMode;
+
+        if(mIsEditMode)
+        {
+            layoutEditBackground.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+            buttonEdit.getBackground().setColorFilter(getResources().getColor(R.color.textLight), PorterDuff.Mode.SRC_ATOP);
+        }
+        else
+        {
+            layoutEditBackground.setBackgroundColor(getResources().getColor(R.color.colorShadow));
+            buttonEdit.getBackground().setColorFilter(getResources().getColor(R.color.mainText), PorterDuff.Mode.SRC_ATOP);
+        }
     }
 
     public void switchDrugList(short type)
@@ -197,19 +229,19 @@ public class RoomActivity extends BaseActivity
             @Override
             public int compare(Drug drug, Drug t1)
             {
-                if(drug.isDangerous() == t1.isDangerous())
-                {
-                    return drug.getName().compareTo(t1.getName());
-                }
-                else
-                {
-                    if(drug.isDangerous() && !t1.isDangerous())
-                        return 1;
-                    else if(!drug.isDangerous() && t1.isDangerous())
-                        return -1;
-                }
+            if(drug.isDangerous() == t1.isDangerous())
+            {
+                return drug.getName().compareTo(t1.getName());
+            }
+            else
+            {
+                if(drug.isDangerous() && !t1.isDangerous())
+                    return 1;
+                else if(!drug.isDangerous() && t1.isDangerous())
+                    return -1;
+            }
 
-                return 0;
+            return 0;
             }
         });
     }
@@ -249,8 +281,10 @@ public class RoomActivity extends BaseActivity
                 @Override
                 public void onClick(View view)
                 {
-                    //AddOrEditDrugDialog.Create((RoomActivity)mContext, drug, drug.isDangerous());
-                    PrecalculationDialog.Create(mContext, drug.getId());
+                    if(mIsEditMode)
+                        AddOrEditDrugDialog.Create((RoomActivity)mContext, drug, drug.isDangerous());
+                    else
+                        PrecalculationDialog.Create((RoomActivity)mContext, drug.getId());
                 }
             });
 

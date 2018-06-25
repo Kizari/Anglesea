@@ -25,7 +25,7 @@ import java.util.GregorianCalendar;
         com.example.anglesea.DataAccess.Room.Room.class,
         Nurse.class,
         Administration.class
-}, version = 16)
+}, version = 18)
 public abstract class DB extends RoomDatabase
 {
     private static DB instance;

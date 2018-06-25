@@ -73,7 +73,7 @@ public class AddOrEditDrugDialog extends Dialog implements View.OnClickListener
         if(mDrug == null)
         {
             textTitle.setText("New Drug");
-            buttonDelete.setText("Cancel");
+            buttonDelete.setVisibility(View.GONE);
             mDrug = new Drug();
         }
         else

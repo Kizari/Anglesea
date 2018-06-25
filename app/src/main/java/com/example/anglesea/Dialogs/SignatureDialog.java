@@ -1,23 +1,32 @@
 package com.example.anglesea.Dialogs;
 
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.anglesea.Activities.CalculationActivity;
+import com.example.anglesea.Activities.HomeActivity;
+import com.example.anglesea.DataAccess.Administration.Administration;
 import com.example.anglesea.Entities.BaseDialog;
+import com.example.anglesea.Entities.DrugType;
+import com.example.anglesea.Entities.Helper;
 import com.example.anglesea.R;
+import com.github.gcacace.signaturepad.views.SignaturePad;
 
 public class SignatureDialog extends BaseDialog implements View.OnClickListener
 {
-    private SignatureDialog(Context context)
+    CalculationActivity mActivity;
+
+    private SignatureDialog(CalculationActivity activity)
     {
-        super(context);
+        super(activity);
+        mActivity = activity;
     }
 
-    public static void Create(Context context)
+    public static void Create(CalculationActivity activity)
     {
-        SignatureDialog dialog = new SignatureDialog(context);
+        SignatureDialog dialog = new SignatureDialog(activity);
         dialog.showFull(dialog);
     }
 
@@ -29,6 +38,40 @@ public class SignatureDialog extends BaseDialog implements View.OnClickListener
 
         Button buttonClose = findViewById(R.id.buttonClose);
         buttonClose.setOnClickListener(this);
+
+        Button buttonConfirm = findViewById(R.id.buttonConfirm);
+        buttonConfirm.setOnClickListener(this);
+    }
+
+    private void onConfirm()
+    {
+        SignaturePad signature = findViewById(R.id.signature);
+        mActivity.mSignature = signature.getSignatureSvg();
+
+        if(mActivity.mIsPediatric || mActivity.mDrug.getType() == DrugType.INTRAVENOUS || mActivity.mDrug.isDangerous())
+        {
+            DangerousDialog.Create(mActivity);
+        }
+        else
+        {
+            Administration administration = new Administration();
+            administration.setQuantity(mActivity.mFinal);
+            administration.setDrugId(mActivity.mDrug.getId());
+            administration.setNHI(mActivity.mNHI);
+            administration.setRN(mActivity.mRN);
+            administration.setSignature(mActivity.mSignature);
+            administration.setTimestamp(System.currentTimeMillis());
+            mDatabase.administration().insert(administration);
+
+            Helper.toast(mActivity, "Administration Complete");
+
+            Intent intent = new Intent(mActivity, HomeActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Removes other Activities from stack
+            intent.putExtra("rn", mActivity.mRN);
+            mActivity.startActivity(intent);
+        }
+
+        dismiss();
     }
 
     public void onClick(View v)
@@ -37,6 +80,9 @@ public class SignatureDialog extends BaseDialog implements View.OnClickListener
         {
             case R.id.buttonClose:
                 dismiss();
+                break;
+            case R.id.buttonConfirm:
+                onConfirm();
                 break;
         }
     }

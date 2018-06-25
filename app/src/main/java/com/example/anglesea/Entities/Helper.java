@@ -30,7 +30,7 @@ public class Helper
         return (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics());
     }
 
-    public int calculateAge(long dob)
+    public static int calculateAge(long dob)
     {
         Calendar now = Calendar.getInstance();
         Calendar birth = Calendar.getInstance();

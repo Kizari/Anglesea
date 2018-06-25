@@ -14,11 +14,15 @@ import com.example.anglesea.R;
 
 public class HomeActivity extends BaseActivity
 {
+    String mRN;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        mRN = getIntent().getExtras().getString("rn");
 
         createRooms((LinearLayout)findViewById(R.id.layoutDay), 12, 6, "D");
         createRooms((LinearLayout)findViewById(R.id.layoutNight), 17, 6, "Rm");
@@ -53,6 +57,7 @@ public class HomeActivity extends BaseActivity
                 public void onClick(View view) {
                     Intent intent = new Intent(context, RoomActivity.class);
                     intent.putExtra("mRoom", roomNo);
+                    intent.putExtra("rn", mRN);
                     context.startActivity(intent);
                 }
             });
