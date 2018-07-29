@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        style="@style/DialogHeader">
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textLight"
+            android:fontFamily="@font/lato"
+            android:textSize="18sp"
+            android:text="Send Audit as PDF"
+            android:background="@color/colorAccent"
+            android:padding="15dp"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/buttonClose"
+            style="@style/ButtonMini"
+            android:background="@drawable/icon_close"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Print from this device"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Open. This requires that your device has a PDF app installed with a print function, and that it is connected to a WiFi or Bluetooth printer."
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Print from a computer"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Send, then enter the recipient email address and send the generated email. Open the PDF attachment from this email on a computer, and print directly from there."
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"/>
+
+        <!--<RadioGroup style="@style/Tabular">
+            <RadioButton
+                android:id="@+id/radioOpen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Open in PDF Viewer"
+                android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/radioEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Send via Email"
+                android:layout_weight="1"/>
+        </RadioGroup>-->
+
+        <LinearLayout
+            style="@style/Tabular"
+            android:padding="5dp"
+            android:layout_margin="0dp">
+
+            <Button
+                android:id="@+id/buttonOpen"
+                style="@style/ButtonSmall"
+                android:background="@drawable/bg_button_accent"
+                android:textColor="@color/textLight"
+                android:text="Open"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp" />
+
+            <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/buttonEmail"
+                style="@style/ButtonSmall"
+                android:background="@drawable/bg_button_accent"
+                android:textColor="@color/textLight"
+                android:text="Email"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

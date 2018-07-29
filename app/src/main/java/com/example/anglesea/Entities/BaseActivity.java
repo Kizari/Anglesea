@@ -75,6 +75,8 @@ public class BaseActivity extends AppCompatActivity
                 startActivity(intent);
                 return true;
             case R.id.item_logout:
+                Helper.saveStringPreference(this, "username", "");
+                Helper.saveStringPreference(this, "password", "");
                 Intent loginIntent = new Intent(this, MainActivity.class);
                 loginIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Removes other Activities from stack
                 startActivity(loginIntent);

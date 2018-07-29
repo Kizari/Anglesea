@@ -16,6 +16,9 @@ import com.example.anglesea.Entities.BaseActivity;
 import com.example.anglesea.Entities.Helper;
 import com.example.anglesea.R;
 
+import java.io.File;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
 {
 
@@ -31,7 +34,38 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
-        SystemClock.sleep(1000);
+        // Delete any outstanding PDF files to clear space on the device
+        ArrayList<String> files = Helper.getPDFDeleteList(this);
+        for(String path : files)
+        {
+            File file = new File(path);
+            if (file.exists())
+                file.delete();
+        }
+        Helper.clearPDFDeleteList(this);
+
+        // Check if the user is already logged in
+        String username = Helper.loadStringPreference(this, "username");
+        String password = Helper.loadStringPreference(this, "password");
+
+        if(username.length() > 0 && password.length() > 0)
+        {
+            mDatabase = DB.get(this);
+            Nurse nurse = mDatabase.nurse().getByRN(username);
+
+            if(nurse != null)
+            {
+                if(nurse.getPassword().equals(password))
+                {
+                    setTheme(R.style.AppTheme);
+                    Intent intent = new Intent(this, HomeActivity.class);
+                    intent.putExtra("rn", nurse.getRN());
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        }
+
         setTheme(R.style.AppTheme);
 
         super.onCreate(savedInstanceState);
@@ -88,6 +122,9 @@ public class MainActivity extends AppCompatActivity
         if(userPassword.equals(nurse.getPassword()))
         {
             // Password matched so go to next activity
+            Helper.saveStringPreference(this, "username", nurse.getRN());
+            Helper.saveStringPreference(this, "password", nurse.getPassword());
+
             Intent intent  = new Intent(this, HomeActivity.class);
             intent.putExtra("rn", nurse.getRN());
             startActivity(intent);

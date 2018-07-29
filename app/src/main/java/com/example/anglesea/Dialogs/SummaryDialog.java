@@ -46,7 +46,7 @@ public class SummaryDialog extends BaseDialog implements View.OnClickListener
         buttonCancel.setOnClickListener(this);
 
         TextView textMessage = findViewById(R.id.textMessage);
-        String message = mActivity.mPatient.getFullName() + " has been discharged.\n\nA summary of this visit has been saved to your device and is available from the audit section found in the app menu.\n\n(Audit #1000" + mChartId + ")";
+        String message = mActivity.mPatient.getFullName() + " has been discharged.\n\nA summary of this visit has been saved to your device and is available from the audit section found in the app menu.\n\n(Audit #" + (10000 + mChartId) + ")";
         textMessage.setText(message);
     }
 

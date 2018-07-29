@@ -1,5 +1,9 @@
 package com.example.anglesea.Entities;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.BitmapDrawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,9 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.caverock.androidsvg.SVG;
 import com.example.anglesea.R;
 import com.karumi.headerrecyclerview.HeaderRecyclerViewAdapter;
-import com.pixplicity.sharp.Sharp;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -21,6 +25,12 @@ public class AuditAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHol
     {
         return item
     }*/
+    Context mContext;
+
+    public AuditAdapter(Context context)
+    {
+        mContext = context;
+    }
 
     @Override
     public AuditHolder onCreateItemViewHolder(ViewGroup viewGroup, int i)
@@ -57,7 +67,29 @@ public class AuditAdapter extends HeaderRecyclerViewAdapter<RecyclerView.ViewHol
         holder.textRN.setText(audit.nurse.getRN());
         holder.textRoom.setText("Room " + audit.room.getRoomName());
 
-        Sharp.loadString(audit.signature).into(holder.imageSignature);
+        //Sharp.loadString(audit.signature).into(holder.imageSignature);
+
+        SVG svg;
+        try
+        {
+            svg = SVG.getFromString(audit.signature);
+        }
+        catch(Exception ex)
+        {
+            svg = null;
+        }
+
+        if(svg != null && svg.getDocumentWidth() != -1)
+        {
+            Bitmap bm = Bitmap.createBitmap((int)Math.ceil(svg.getDocumentWidth()),
+                    (int)Math.ceil(svg.getDocumentHeight()),
+                    Bitmap.Config.ARGB_8888);
+
+            Canvas bmc = new Canvas(bm);
+            bmc.drawRGB(255, 255, 255);
+            svg.renderToCanvas(bmc);
+            holder.imageSignature.setImageDrawable(new BitmapDrawable(mContext.getResources(), bm));
+        }
     }
 
     @Override

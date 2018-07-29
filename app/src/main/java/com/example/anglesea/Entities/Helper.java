@@ -1,15 +1,18 @@
 package com.example.anglesea.Entities;
 
-import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 import android.util.TypedValue;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class Helper
 {
@@ -62,5 +65,66 @@ public class Helper
     public static void toast(Context c, String message)
     {
         Toast.makeText(c, message, Toast.LENGTH_LONG).show();
+    }
+
+    private static final String PREFS_NAME = "AngleseaSharedPreferences";
+
+    public static void saveStringPreference(Context c, String key, String value)
+    {
+        SharedPreferences.Editor editor = c.getSharedPreferences(PREFS_NAME, MODE_PRIVATE).edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
+
+    public static String loadStringPreference(Context c, String key)
+    {
+        SharedPreferences prefs = c.getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        String restoredText = prefs.getString(key, null);
+
+        if(restoredText != null)
+        {
+            return prefs.getString(key, "");
+        }
+
+        return "";
+    }
+
+    public static void appendPDFDeleteList(Context c, String file)
+    {
+        Gson gson = new Gson();
+        String loaded = loadStringPreference(c, "deleteList");
+
+        if(loaded.length() > 0)
+        {
+            ArrayList<String> list = gson.fromJson(loaded, ArrayList.class);
+            list.add(file);
+            saveStringPreference(c, "deleteList", gson.toJson(list));
+        }
+        else
+        {
+            ArrayList<String> list = new ArrayList<String>();
+            list.add(file);
+            saveStringPreference(c, "deleteList", gson.toJson(list));
+        }
+    }
+
+    public static ArrayList<String> getPDFDeleteList(Context c)
+    {
+        Gson gson = new Gson();
+        String loaded = loadStringPreference(c, "deleteList");
+
+        if(loaded.length() > 0)
+        {
+            return gson.fromJson(loaded, ArrayList.class);
+        }
+        else
+        {
+            return new ArrayList<String>();
+        }
+    }
+
+    public static void clearPDFDeleteList(Context c)
+    {
+        saveStringPreference(c, "deleteList", "");
     }
 }
